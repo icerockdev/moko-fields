@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="cant_be_blank">Field can\'t be blank</string>
+</resources>
