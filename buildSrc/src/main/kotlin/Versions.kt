@@ -14,11 +14,7 @@ object Versions {
     private const val mokoResources = "0.3.0"
 
     object Plugins {
-        const val android = "3.4.1"
-
         const val kotlin = Versions.kotlin
-        const val androidExtensions = Versions.kotlin
-
         const val mokoResources = Versions.mokoResources
     }
 
