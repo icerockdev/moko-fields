@@ -45,10 +45,6 @@ object Deps {
                 iosArm64 = "dev.icerock.moko:fields-iosarm64:${Versions.Libs.MultiPlatform.mokoFields}"
             )
         }
-
-        object Jvm {
-            const val kotlinPoet = "com.squareup:kotlinpoet:${Versions.Libs.Jvm.kotlinPoet}"
-        }
     }
 
     val plugins: Map<String, String> = mapOf(

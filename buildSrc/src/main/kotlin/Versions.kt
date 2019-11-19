@@ -6,12 +6,12 @@ object Versions {
     object Android {
         const val compileSdk = 28
         const val targetSdk = 28
-        const val minSdk = 21
+        const val minSdk = 16
     }
 
-    const val kotlin = "1.3.50"
+    const val kotlin = "1.3.60"
 
-    private const val mokoResources = "0.3.0"
+    private const val mokoResources = "0.5.0"
 
     object Plugins {
         const val kotlin = Versions.kotlin
@@ -20,19 +20,15 @@ object Versions {
 
     object Libs {
         object Android {
-            const val appCompat = "1.0.2"
+            const val appCompat = "1.1.0"
             const val lifecycle = "2.0.0"
             const val material = "1.0.0"
         }
 
         object MultiPlatform {
             const val mokoResources = Versions.mokoResources
-            const val mokoMvvm = "0.2.0"
-            const val mokoFields = "0.1.0"
-        }
-
-        object Jvm {
-            const val kotlinPoet = "1.3.0"
+            const val mokoMvvm = "0.4.0-dev-2"
+            const val mokoFields = "0.2.0-dev-1"
         }
     }
 }
