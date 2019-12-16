@@ -20,7 +20,7 @@ PODS:
 
 DEPENDENCIES:
   - MultiPlatformLibrary (from `../mpp-library`)
-  - MultiPlatformLibraryMvvm (from `https://github.com/icerockdev/moko-mvvm.git`, tag `release/0.4.0-dev-2`)
+  - MultiPlatformLibraryMvvm (from `https://github.com/icerockdev/moko-mvvm.git`, tag `release/0.4.0`)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -33,12 +33,12 @@ EXTERNAL SOURCES:
     :path: "../mpp-library"
   MultiPlatformLibraryMvvm:
     :git: https://github.com/icerockdev/moko-mvvm.git
-    :tag: release/0.4.0-dev-2
+    :tag: release/0.4.0
 
 CHECKOUT OPTIONS:
   MultiPlatformLibraryMvvm:
     :git: https://github.com/icerockdev/moko-mvvm.git
-    :tag: release/0.4.0-dev-2
+    :tag: release/0.4.0
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
@@ -47,6 +47,6 @@ SPEC CHECKSUMS:
   MultiPlatformLibraryMvvm: 999ac3896d8214fd65e0e0a376a2e553bf4515b3
   SkyFloatingLabelTextField: 4b46db0ab1ccde0919cded29c656e6b4805eda04
 
-PODFILE CHECKSUM: 9bb0e5658edab1e53974cc074bea02939d2f9865
+PODFILE CHECKSUM: d8795b76c23141118ef4cbc8de0c59a034e8abae
 
 COCOAPODS: 1.8.3
