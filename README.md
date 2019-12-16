@@ -1,5 +1,5 @@
 ![moko-fields](img/logo.png)  
-[![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0) [![Download](https://api.bintray.com/packages/icerockdev/moko/moko-fields/images/download.svg) ](https://bintray.com/icerockdev/moko/moko-fields/_latestVersion)
+[![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0) [![Download](https://api.bintray.com/packages/icerockdev/moko/moko-fields/images/download.svg) ](https://bintray.com/icerockdev/moko/moko-fields/_latestVersion) ![kotlin-version](https://img.shields.io/badge/kotlin-1.3.61-orange)
 
 # Mobile Kotlin fields
 This is a Kotlin MultiPlatform library that add form fields abstraction to implement any input forms
@@ -20,8 +20,14 @@ TODO
 
 ## Requirements
 - Gradle version 5.4.1+
-- Android API 21+
+- Android API 16+
 - iOS version 9.0+
+
+## Versions
+- kotlin 1.3.50
+  - 0.1.0
+- kotlin 1.3.61
+  - 0.2.0
 
 ## Installation
 root build.gradle  
@@ -36,7 +42,7 @@ allprojects {
 project build.gradle
 ```groovy
 dependencies {
-    commonMainApi("dev.icerock.moko:fields:0.1.0")
+    commonMainApi("dev.icerock.moko:fields:0.2.0")
 }
 ```
 
