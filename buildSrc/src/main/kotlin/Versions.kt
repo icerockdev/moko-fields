@@ -9,9 +9,9 @@ object Versions {
         const val minSdk = 16
     }
 
-    const val kotlin = "1.3.61"
+    const val kotlin = "1.3.70"
 
-    private const val mokoResources = "0.6.0"
+    private const val mokoResources = "0.9.0"
 
     object Plugins {
         const val kotlin = Versions.kotlin
@@ -27,8 +27,8 @@ object Versions {
 
         object MultiPlatform {
             const val mokoResources = Versions.mokoResources
-            const val mokoMvvm = "0.4.0"
-            const val mokoFields = "0.2.0"
+            const val mokoMvvm = "0.6.0"
+            const val mokoFields = "0.3.0"
         }
     }
 }
