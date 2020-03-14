@@ -16,11 +16,12 @@ PODS:
   - MultiPlatformLibraryMvvm/SkyFloatingLabelTextField (0.3.0):
     - MultiPlatformLibrary
     - SkyFloatingLabelTextField
-  - SkyFloatingLabelTextField (3.7.0)
+  - SkyFloatingLabelTextField (3.8.0)
 
 DEPENDENCIES:
+  - AlamofireImage (= 3.6.0)
   - MultiPlatformLibrary (from `../mpp-library`)
-  - MultiPlatformLibraryMvvm (from `https://github.com/icerockdev/moko-mvvm.git`, tag `release/0.4.0`)
+  - MultiPlatformLibraryMvvm (from `https://github.com/icerockdev/moko-mvvm.git`, tag `release/0.6.0`)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -33,20 +34,20 @@ EXTERNAL SOURCES:
     :path: "../mpp-library"
   MultiPlatformLibraryMvvm:
     :git: https://github.com/icerockdev/moko-mvvm.git
-    :tag: release/0.4.0
+    :tag: release/0.6.0
 
 CHECKOUT OPTIONS:
   MultiPlatformLibraryMvvm:
     :git: https://github.com/icerockdev/moko-mvvm.git
-    :tag: release/0.4.0
+    :tag: release/0.6.0
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   AlamofireImage: be9963c6582d68b39e89191f64c82a7d7bf40fdd
   MultiPlatformLibrary: 176fb8ade516666cd47e93de1b71ba0441a541bb
   MultiPlatformLibraryMvvm: 999ac3896d8214fd65e0e0a376a2e553bf4515b3
-  SkyFloatingLabelTextField: 4b46db0ab1ccde0919cded29c656e6b4805eda04
+  SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
 
-PODFILE CHECKSUM: d8795b76c23141118ef4cbc8de0c59a034e8abae
+PODFILE CHECKSUM: a4f77a5f7c16d78be2059479eef10d3f8a009ceb
 
-COCOAPODS: 1.8.3
+COCOAPODS: 1.9.0
