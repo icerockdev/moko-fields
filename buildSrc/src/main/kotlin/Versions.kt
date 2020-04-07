@@ -28,7 +28,7 @@ object Versions {
         object MultiPlatform {
             const val mokoResources = Versions.mokoResources
             const val mokoMvvm = "0.6.0"
-            const val mokoFields = "0.3.0"
+            const val mokoFields = "0.4.0"
         }
     }
 }
