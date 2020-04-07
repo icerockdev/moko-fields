@@ -12,17 +12,25 @@ import dev.icerock.moko.mvvm.dispatcher.EventsDispatcherOwner
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.desc.desc
+import dev.icerock.moko.validations.ValidationResult
+import dev.icerock.moko.validations.fieldValidationBlock
+import dev.icerock.moko.validations.matchRegex
+import dev.icerock.moko.validations.notBlank
+import dev.icerock.moko.validations.minLength
+import dev.icerock.moko.validations.validate
 
 class LoginViewModel(
     override val eventsDispatcher: EventsDispatcher<EventsListener>
 ) : ViewModel(), EventsDispatcherOwner<LoginViewModel.EventsListener> {
     val emailField = FormField<String, StringDesc>("", liveBlock { email ->
-        if (email.isBlank()) MR.strings.cant_be_blank.desc()
-        else null
+        ValidationResult.of(email)
+            .notBlank(MR.strings.cant_be_blank.desc())
+            .matchRegex(MR.strings.wrong_format.desc(), EMAIL_REGEX)
+            .validate()
     })
-    val passwordField = FormField<String, StringDesc>("", liveBlock { password ->
-        if (password.isBlank()) MR.strings.cant_be_blank.desc()
-        else null
+    val passwordField = FormField<String, StringDesc>("", fieldValidationBlock {
+        this.notBlank(MR.strings.cant_be_blank.desc())
+            .minLength(MR.strings.must_contain_more_char.desc(), 4)
     })
 
     private val fields = listOf(emailField, passwordField)
@@ -39,5 +47,17 @@ class LoginViewModel(
 
     interface EventsListener {
         fun showMessage(message: StringDesc)
+    }
+
+    companion object {
+        private val EMAIL_REGEX = Regex(
+            "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
+                    "\\@" +
+                    "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+                    "(" +
+                    "\\." +
+                    "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+                    ")+"
+        )
     }
 }
