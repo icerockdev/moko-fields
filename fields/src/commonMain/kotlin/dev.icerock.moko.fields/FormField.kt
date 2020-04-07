@@ -8,19 +8,26 @@ import dev.icerock.moko.mvvm.livedata.*
 
 open class FormField<D, E>(initialValue: D, validation: (LiveData<D>) -> LiveData<E?>) {
 
-    val data = MutableLiveData(initialValue)
+    open val data = MutableLiveData(initialValue)
 
-    private val validationError: MutableLiveData<E?> = MediatorLiveData<E?>(null).apply {
-        addSource(validation(data.distinct())) {
-            value = it
+    private val validationError: MutableLiveData<E?> by lazy {
+        MediatorLiveData<E?>(null).apply {
+            addSource(validation(data.distinct())) {
+                value = it
+            }
         }
     }
+
     private val showValidationError = MutableLiveData(false)
 
-    val error: LiveData<E?> = validationError.mergeWith(showValidationError) { error, show ->
-        if (show) error else null
+    val error: LiveData<E?> by lazy {
+        validationError.mergeWith(showValidationError) { error, show ->
+            if (show) error else null
+        }
     }
-    val isValid: LiveData<Boolean> = validationError.map { it == null }
+    val isValid: LiveData<Boolean> by lazy {
+        validationError.map { it == null }
+    }
 
     fun setError(error: E?) {
         validationError.value = error
