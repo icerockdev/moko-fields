@@ -20,6 +20,9 @@ dependencies {
     commonMainImplementation("dev.icerock.moko:parcelize:0.4.0")
     commonMainImplementation("dev.icerock.moko:graphics:0.4.0")
 
+    // fix of Failed to resolve Kotlin library: fields/build/kotlinSourceSetMetadata/commonMain/org.jetbrains.kotlinx-atomicfu-common/org.jetbrains.kotlinx-atomicfu-common-nativeInterop.klib
+    commonMainImplementation(Deps.Libs.MultiPlatform.coroutines)
+
     androidMainImplementation(Deps.Libs.Android.appCompat)
     androidMainImplementation(Deps.Libs.Android.lifecycle)
 }

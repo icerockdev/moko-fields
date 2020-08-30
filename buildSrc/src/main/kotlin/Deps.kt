@@ -10,6 +10,7 @@ object Deps {
     private const val androidLifecycleVersion = "2.1.0"
     private const val androidCoreTestingVersion = "2.1.0"
 
+    private const val coroutinesVersion = "1.3.9"
     private const val mokoResourcesVersion = "0.12.0"
     private const val mokoMvvmVersion = "0.8.0"
     const val mokoFieldsVersion = "0.5.0"
@@ -45,6 +46,8 @@ object Deps {
         }
 
         object MultiPlatform {
+            const val coroutines =
+                "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
             val mokoResources = MultiPlatformLibrary(
                 common = "dev.icerock.moko:resources:$mokoResourcesVersion",
                 iosArm64 = "dev.icerock.moko:resources-iosarm64:$mokoResourcesVersion",
@@ -55,7 +58,8 @@ object Deps {
                 iosArm64 = "dev.icerock.moko:mvvm-iosarm64:$mokoMvvmVersion",
                 iosX64 = "dev.icerock.moko:mvvm-iosx64:$mokoMvvmVersion"
             )
-            const val mokoFields = "dev.icerock.moko:fields:$mokoFieldsVersion"
+            const val mokoFields =
+                "dev.icerock.moko:fields:$mokoFieldsVersion"
         }
 
         object Tests {
