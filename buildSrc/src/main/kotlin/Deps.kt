@@ -3,51 +3,70 @@
  */
 
 object Deps {
+    private const val kotlinVersion = "1.4.0"
+
+    private const val androidAppCompatVersion = "1.1.0"
+    private const val materialDesignVersion = "1.0.0"
+    private const val androidLifecycleVersion = "2.1.0"
+    private const val androidCoreTestingVersion = "2.1.0"
+
+    private const val coroutinesVersion = "1.3.9"
+    private const val mokoResourcesVersion = "0.13.0"
+    private const val mokoMvvmVersion = "0.8.0"
+    const val mokoFieldsVersion = "0.5.0"
+
+    object Android {
+        const val compileSdk = 28
+        const val targetSdk = 28
+        const val minSdk = 16
+    }
+
     object Plugins {
-        const val mokoResources =
-            "dev.icerock.moko:resources-generator:${Versions.Plugins.mokoResources}"
+        val androidApplication = GradlePlugin(id = "com.android.application")
+        val androidLibrary = GradlePlugin(id = "com.android.library")
+        val kotlinMultiplatform = GradlePlugin(id = "org.jetbrains.kotlin.multiplatform")
+        val kotlinKapt = GradlePlugin(id = "kotlin-kapt")
+        val kotlinAndroid = GradlePlugin(id = "kotlin-android")
+        val mavenPublish = GradlePlugin(id = "org.gradle.maven-publish")
+
+        val mobileMultiplatform = GradlePlugin(id = "dev.icerock.mobile.multiplatform")
+        val iosFramework = GradlePlugin(id = "dev.icerock.mobile.multiplatform.ios-framework")
+
+        val mokoResources = GradlePlugin(
+            id = "dev.icerock.mobile.multiplatform-resources",
+            module = "dev.icerock.moko:resources-generator:$mokoResourcesVersion"
+        )
     }
 
     object Libs {
         object Android {
-            val kotlinStdLib = AndroidLibrary(
-                name = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
-            )
-            val appCompat = AndroidLibrary(
-                name = "androidx.appcompat:appcompat:${Versions.Libs.Android.appCompat}"
-            )
-            val lifecycle = AndroidLibrary(
-                name = "androidx.lifecycle:lifecycle-extensions:${Versions.Libs.Android.lifecycle}"
-            )
-            val material = AndroidLibrary(
-                name = "com.google.android.material:material:${Versions.Libs.Android.material}"
-            )
+            const val appCompat = "androidx.appcompat:appcompat:$androidAppCompatVersion"
+            const val material = "com.google.android.material:material:$materialDesignVersion"
+            const val lifecycle = "androidx.lifecycle:lifecycle-extensions:$androidLifecycleVersion"
         }
 
         object MultiPlatform {
-            val kotlinStdLib = MultiPlatformLibrary(
-                android = Android.kotlinStdLib.name,
-                common = "org.jetbrains.kotlin:kotlin-stdlib-common:${Versions.kotlin}"
-            )
+            const val coroutines =
+                "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
             val mokoResources = MultiPlatformLibrary(
-                common = "dev.icerock.moko:resources:${Versions.Libs.MultiPlatform.mokoResources}",
-                iosX64 = "dev.icerock.moko:resources-iosx64:${Versions.Libs.MultiPlatform.mokoResources}",
-                iosArm64 = "dev.icerock.moko:resources-iosarm64:${Versions.Libs.MultiPlatform.mokoResources}"
+                common = "dev.icerock.moko:resources:$mokoResourcesVersion",
+                iosArm64 = "dev.icerock.moko:resources-iosarm64:$mokoResourcesVersion",
+                iosX64 = "dev.icerock.moko:resources-iosx64:$mokoResourcesVersion"
             )
             val mokoMvvm = MultiPlatformLibrary(
-                common = "dev.icerock.moko:mvvm:${Versions.Libs.MultiPlatform.mokoMvvm}",
-                iosX64 = "dev.icerock.moko:mvvm-iosx64:${Versions.Libs.MultiPlatform.mokoMvvm}",
-                iosArm64 = "dev.icerock.moko:mvvm-iosarm64:${Versions.Libs.MultiPlatform.mokoMvvm}"
+                common = "dev.icerock.moko:mvvm:$mokoMvvmVersion",
+                iosArm64 = "dev.icerock.moko:mvvm-iosarm64:$mokoMvvmVersion",
+                iosX64 = "dev.icerock.moko:mvvm-iosx64:$mokoMvvmVersion"
             )
-            val mokoFields = MultiPlatformLibrary(
-                common = "dev.icerock.moko:fields:${Versions.Libs.MultiPlatform.mokoFields}",
-                iosX64 = "dev.icerock.moko:fields-iosx64:${Versions.Libs.MultiPlatform.mokoFields}",
-                iosArm64 = "dev.icerock.moko:fields-iosarm64:${Versions.Libs.MultiPlatform.mokoFields}"
-            )
+            const val mokoFields =
+                "dev.icerock.moko:fields:$mokoFieldsVersion"
+        }
+
+        object Tests {
+            const val kotlinTestJUnit =
+                "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion"
+            const val androidCoreTesting =
+                "androidx.arch.core:core-testing:$androidCoreTestingVersion"
         }
     }
-
-    val plugins: Map<String, String> = mapOf(
-        "dev.icerock.mobile.multiplatform-resources" to Plugins.mokoResources
-    )
 }
