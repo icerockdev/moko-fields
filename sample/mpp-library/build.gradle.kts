@@ -11,6 +11,7 @@ plugins {
 }
 
 dependencies {
+    commonMainApi(Deps.Libs.MultiPlatform.coroutines)
     commonMainApi(Deps.Libs.MultiPlatform.mokoResources.common)
     commonMainApi(Deps.Libs.MultiPlatform.mokoMvvm.common)
     commonMainApi(Deps.Libs.MultiPlatform.mokoFields)
