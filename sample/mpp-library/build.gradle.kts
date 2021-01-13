@@ -13,14 +13,9 @@ plugins {
 dependencies {
     commonMainApi(Deps.Libs.MultiPlatform.coroutines)
     commonMainApi(Deps.Libs.MultiPlatform.mokoResources.common)
-    commonMainApi(Deps.Libs.MultiPlatform.mokoMvvm.common)
+    commonMainApi(Deps.Libs.MultiPlatform.mokoMvvmCore.common)
+    commonMainApi(Deps.Libs.MultiPlatform.mokoMvvmLiveData.common)
     commonMainApi(Deps.Libs.MultiPlatform.mokoFields)
-
-    // temporary fix of https://youtrack.jetbrains.com/issue/KT-41083
-    commonMainImplementation("dev.icerock.moko:parcelize:0.4.0")
-    commonMainImplementation("dev.icerock.moko:graphics:0.4.0")
-
-    androidMainImplementation(Deps.Libs.Android.lifecycle)
 }
 
 multiplatformResources {
@@ -30,5 +25,6 @@ multiplatformResources {
 framework {
     export(project(":fields"))
     export(Deps.Libs.MultiPlatform.mokoResources)
-    export(Deps.Libs.MultiPlatform.mokoMvvm)
+    export(Deps.Libs.MultiPlatform.mokoMvvmCore)
+    export(Deps.Libs.MultiPlatform.mokoMvvmLiveData)
 }
