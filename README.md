@@ -1,5 +1,5 @@
 ![moko-fields](img/logo.png)  
-[![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0) [![Download](https://api.bintray.com/packages/icerockdev/moko/moko-fields/images/download.svg) ](https://bintray.com/icerockdev/moko/moko-fields/_latestVersion) ![kotlin-version](https://img.shields.io/badge/kotlin-1.4.0-orange)
+[![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0) [![Download](https://api.bintray.com/packages/icerockdev/moko/moko-fields/images/download.svg) ](https://bintray.com/icerockdev/moko/moko-fields/_latestVersion) ![kotlin-version](https://img.shields.io/badge/kotlin-1.4.21-orange)
 
 # Mobile Kotlin fields
 This is a Kotlin MultiPlatform library that add form fields abstraction to implement any input forms
@@ -34,6 +34,8 @@ This is a Kotlin MultiPlatform library that add form fields abstraction to imple
   - 0.4.0
 - kotlin 1.4.0
   - 0.5.0
+- kotlin 1.4.21
+  - 0.6.0
 
 ## Installation
 root build.gradle  
@@ -48,7 +50,7 @@ allprojects {
 project build.gradle
 ```groovy
 dependencies {
-    commonMainApi("dev.icerock.moko:fields:0.5.0")
+    commonMainApi("dev.icerock.moko:fields:0.6.0")
 }
 ```
 

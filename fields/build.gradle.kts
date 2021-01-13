@@ -13,18 +13,8 @@ group = "dev.icerock.moko"
 version = Deps.mokoFieldsVersion
 
 dependencies {
-    commonMainImplementation(Deps.Libs.MultiPlatform.mokoMvvm.common)
+    commonMainImplementation(Deps.Libs.MultiPlatform.mokoMvvmLiveData.common)
     commonMainImplementation(Deps.Libs.MultiPlatform.mokoResources.common)
-
-    // temporary fix of https://youtrack.jetbrains.com/issue/KT-41083
-    commonMainImplementation("dev.icerock.moko:parcelize:0.4.0")
-    commonMainImplementation("dev.icerock.moko:graphics:0.4.0")
-
-    // fix of Failed to resolve Kotlin library: fields/build/kotlinSourceSetMetadata/commonMain/org.jetbrains.kotlinx-atomicfu-common/org.jetbrains.kotlinx-atomicfu-common-nativeInterop.klib
-    commonMainImplementation(Deps.Libs.MultiPlatform.coroutines)
-
-    androidMainImplementation(Deps.Libs.Android.appCompat)
-    androidMainImplementation(Deps.Libs.Android.lifecycle)
 }
 
 publishing {
