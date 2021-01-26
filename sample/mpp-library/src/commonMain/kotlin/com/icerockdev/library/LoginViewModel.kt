@@ -13,24 +13,23 @@ import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.desc.desc
 import dev.icerock.moko.validations.ValidationResult
-import dev.icerock.moko.validations.fieldValidationBlock
+import dev.icerock.moko.validations.fieldValidation
 import dev.icerock.moko.validations.matchRegex
 import dev.icerock.moko.validations.notBlank
 import dev.icerock.moko.validations.minLength
-import dev.icerock.moko.validations.validate
 
 class LoginViewModel(
     override val eventsDispatcher: EventsDispatcher<EventsListener>
 ) : ViewModel(), EventsDispatcherOwner<LoginViewModel.EventsListener> {
     val emailField = FormField<String, StringDesc>("", liveBlock { email ->
-        ValidationResult.of(email)
-            .notBlank(MR.strings.cant_be_blank.desc())
-            .matchRegex(MR.strings.wrong_format.desc(), EMAIL_REGEX)
-            .validate()
+        ValidationResult.of(email) {
+            notBlank(MR.strings.cant_be_blank.desc())
+            matchRegex(MR.strings.wrong_format.desc(), EMAIL_REGEX)
+        }
     })
-    val passwordField = FormField<String, StringDesc>("", fieldValidationBlock {
-        this.notBlank(MR.strings.cant_be_blank.desc())
-            .minLength(MR.strings.must_contain_more_char.desc(), 4)
+    val passwordField = FormField<String, StringDesc>("", fieldValidation {
+        notBlank(MR.strings.cant_be_blank.desc())
+        minLength(MR.strings.must_contain_more_char.desc(), 4)
     })
 
     private val fields = listOf(emailField, passwordField)
