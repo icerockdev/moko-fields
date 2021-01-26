@@ -28,7 +28,7 @@ fun <D> fieldValidation(
 ): ((LiveData<D>) -> LiveData<StringDesc?>) {
     return { liveData ->
         liveData.map {
-            block(ValidationResultDslContext(it)).validate()
+            ValidationResult.of(it, block)
         }
     }
 }

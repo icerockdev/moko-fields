@@ -29,6 +29,13 @@ sealed class ValidationResult<out V : Any?> {
         fun <V : Any?> of(value: V): ValidationResult<V> {
             return success(value)
         }
+
+        fun <V : Any?> of(
+            value: V,
+            block: ValidationResult<V>.() -> ValidationResult<V>
+        ): StringDesc? {
+            return block(ValidationResultDslContext(value)).validate()
+        }
     }
 }
 
