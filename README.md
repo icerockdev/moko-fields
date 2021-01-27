@@ -132,6 +132,60 @@ emailField.bindTextTwoWay(liveData: viewModel.emailField.data)
 emailField.bindError(liveData: viewModel.emailField.error)
 ```
 
+#### Validations packet
+
+There is a useful `ValidationResult` class for building validation monads for a form fields.
+Two formats for creating validation are implemented:
+
+- Chain/monad validation:
+
+```kotlin
+ValidationResult.of(emailFieldValue)
+    .notBlank(blankErrorStringDesc)
+    .matchRegex(wrongEmailErrorStringDesc, EMAIL_REGEX)
+    .validate()
+```
+
+**For this variant, do not forget to call function `validate` at the end!**
+
+- DSL validation:
+```kotlin
+ValidationResult.of(emailFieldValue) {
+    notBlank(blankErrorStringDesc)
+    matchRegex(wrongEmailErrorStringDesc, EMAIL_REGEX)
+}
+```
+
+To create a new function for validation monad, you need to create an extension function of class
+`ValidationResult` using builder `nextValidation`. For example, this is how the ready-made function
+for checking `String` values for blankness looks like:
+
+```kotlin
+fun ValidationResult<String>.notBlank(errorText: StringDesc) = nextValidation { value ->
+    if (value.isNotBlank()) {
+        ValidationResult.success(value)
+    } else {
+        ValidationResult.failure(errorText)
+    }
+}
+```
+
+All the ready-made validation functions of the library can be found in the source codes in the files
+`AnyValidations.kt` for `Any` class and `StringValidations.kt` for `String` class.
+
+To simplify of adding validation to the `FormField` object (without mapping of a `LiveData`
+objects) you can use the builder-function `fieldValidation`:
+
+```kotlin
+val passwordField = FormField<String, StringDesc>(
+    initialValue = "",
+    validation = fieldValidation {
+        notBlank(MR.strings.cant_be_blank.desc())
+        minLength(MR.strings.must_contain_more_char.desc(), 4)
+    }
+)
+```
+
 ## Samples
 More examples can be found in the [sample directory](sample).
 

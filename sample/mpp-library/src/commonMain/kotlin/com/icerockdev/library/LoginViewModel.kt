@@ -27,10 +27,13 @@ class LoginViewModel(
             matchRegex(MR.strings.wrong_format.desc(), EMAIL_REGEX)
         }
     })
-    val passwordField = FormField<String, StringDesc>("", fieldValidation {
-        notBlank(MR.strings.cant_be_blank.desc())
-        minLength(MR.strings.must_contain_more_char.desc(), 4)
-    })
+    val passwordField = FormField<String, StringDesc>(
+        initialValue = "",
+        validation = fieldValidation {
+            notBlank(MR.strings.cant_be_blank.desc())
+            minLength(MR.strings.must_contain_more_char.desc(), 4)
+        }
+    )
 
     private val fields = listOf(emailField, passwordField)
 
