@@ -4,14 +4,22 @@
 
 package dev.icerock.moko.validations
 
-import dev.icerock.moko.mvvm.livedata.LiveData
-import dev.icerock.moko.mvvm.livedata.map
 import dev.icerock.moko.resources.desc.StringDesc
 
 sealed class ValidationResult<out V : Any?> {
 
-    class Success<out V : Any?>(val value: V) : ValidationResult<V>()
-    class Failure(val failureText: StringDesc) : ValidationResult<Nothing>()
+    open fun <T : Any?> ValidationResult<T>.nextValidation(
+        block: (value: T) -> ValidationResult<T>
+    ): ValidationResult<T> {
+        return if (this is Success) {
+            block(this.value)
+        } else {
+            this
+        }
+    }
+
+    class Success<out V : Any?> internal constructor(val value: V) : ValidationResult<V>()
+    class Failure internal constructor(val failureText: StringDesc) : ValidationResult<Nothing>()
 
     companion object {
         fun <V : Any?> success(value: V) = Success(value)
@@ -21,33 +29,49 @@ sealed class ValidationResult<out V : Any?> {
         fun <V : Any?> of(value: V): ValidationResult<V> {
             return success(value)
         }
-    }
-}
 
-inline fun <V : Any?> ValidationResult<V>.nextValidation(
-    block: (value: V) -> ValidationResult<V>
-): ValidationResult<V> {
-    return if (this is ValidationResult.Success) {
-        block(this.value)
-    } else {
-        this
+        fun <V : Any?> of(
+            value: V,
+            block: ValidationResult<V>.() -> ValidationResult<V>
+        ): StringDesc? {
+            return block(ValidationResultDslContext(value)).validate()
+        }
     }
 }
 
 fun <V : Any?> ValidationResult<V>.validate(): StringDesc? {
-    return if (this is ValidationResult.Failure) {
-        this.failureText
-    } else {
-        null
+    return when (this) {
+        is ValidationResult.Failure -> {
+            this.failureText
+        }
+        is ValidationResultDslContext -> {
+            this.errorResult?.failureText
+        }
+        else -> {
+            null
+        }
     }
 }
 
-fun <D> fieldValidationBlock(
-    block: ValidationResult<D>.() -> ValidationResult<D>
-): ((LiveData<D>) -> LiveData<StringDesc?>) {
-    return { liveData ->
-        liveData.map {
-            block(ValidationResult.of(it)).validate()
+internal class ValidationResultDslContext<out V : Any?>(
+    val validatedValue: V
+) : ValidationResult<V>() {
+    internal var errorResult: Failure? = null
+
+    override fun <T> ValidationResult<T>.nextValidation(
+        block: (value: T) -> ValidationResult<T>
+    ): ValidationResult<T> {
+        val currentErrorResult = errorResult
+        if (currentErrorResult != null) {
+            return currentErrorResult
         }
+
+        this as ValidationResultDslContext
+        val result = block(validatedValue)
+
+        if (result is Failure) {
+            errorResult = result
+        }
+        return this
     }
 }
