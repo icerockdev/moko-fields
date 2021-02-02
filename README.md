@@ -36,6 +36,7 @@ This is a Kotlin MultiPlatform library that add form fields abstraction to imple
   - 0.5.0
 - kotlin 1.4.21
   - 0.6.0
+  - 0.7.0
 
 ## Installation
 root build.gradle  
@@ -50,7 +51,7 @@ allprojects {
 project build.gradle
 ```groovy
 dependencies {
-    commonMainApi("dev.icerock.moko:fields:0.6.0")
+    commonMainApi("dev.icerock.moko:fields:0.7.0")
 }
 ```
 
