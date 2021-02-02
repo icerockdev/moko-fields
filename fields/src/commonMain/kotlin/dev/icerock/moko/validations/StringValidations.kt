@@ -48,3 +48,12 @@ fun ValidationResult<String>.matchRegex(errorText: StringDesc, regex: Regex) =
             ValidationResult.failure(errorText)
         }
     }
+
+fun ValidationResult<String>.containedIn(errorText: StringDesc, validValues: List<String>) =
+    nextValidation { value ->
+        if (validValues.contains(value)) {
+            ValidationResult.success(value)
+        } else {
+            ValidationResult.failure(errorText)
+        }
+    }

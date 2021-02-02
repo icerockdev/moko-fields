@@ -15,6 +15,8 @@ version = Deps.mokoFieldsVersion
 dependencies {
     commonMainImplementation(Deps.Libs.MultiPlatform.mokoMvvmLiveData.common)
     commonMainImplementation(Deps.Libs.MultiPlatform.mokoResources.common)
+
+    commonTestApi(Deps.Libs.MultiPlatform.mokoTest.common)
 }
 
 publishing {

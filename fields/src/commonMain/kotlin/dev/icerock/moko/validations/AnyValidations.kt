@@ -6,8 +6,16 @@ package dev.icerock.moko.validations
 
 import dev.icerock.moko.resources.desc.StringDesc
 
-fun ValidationResult<Any?>.notNull(errorText: StringDesc) = nextValidation { value ->
+fun <T : Any> ValidationResult<T?>.notNull(errorText: StringDesc) = nextValidation { value ->
     if (value != null) {
+        ValidationResult.success(value)
+    } else {
+        ValidationResult.failure(errorText)
+    }
+}
+
+fun <T : Any> ValidationResult<T?>.isEqual(errorText: StringDesc, reference: T?) = nextValidation { value ->
+    if (value == reference) {
         ValidationResult.success(value)
     } else {
         ValidationResult.failure(errorText)

@@ -36,6 +36,7 @@ This is a Kotlin MultiPlatform library that add form fields abstraction to imple
   - 0.5.0
 - kotlin 1.4.21
   - 0.6.0
+  - 0.7.0
 
 ## Installation
 root build.gradle  
@@ -50,7 +51,7 @@ allprojects {
 project build.gradle
 ```groovy
 dependencies {
-    commonMainApi("dev.icerock.moko:fields:0.6.0")
+    commonMainApi("dev.icerock.moko:fields:0.7.0")
 }
 ```
 
@@ -130,6 +131,60 @@ Bind `FormField` to UI by `data` and `error` `LiveData`s.
 ```swift
 emailField.bindTextTwoWay(liveData: viewModel.emailField.data)
 emailField.bindError(liveData: viewModel.emailField.error)
+```
+
+#### Validations packet
+
+There is a useful `ValidationResult` class for building validation monads for a form fields.
+Two formats for creating validation are implemented:
+
+- Chain/monad validation:
+
+```kotlin
+ValidationResult.of(emailFieldValue)
+    .notBlank(blankErrorStringDesc)
+    .matchRegex(wrongEmailErrorStringDesc, EMAIL_REGEX)
+    .validate()
+```
+
+**For this variant, do not forget to call function `validate` at the end!**
+
+- DSL validation:
+```kotlin
+ValidationResult.of(emailFieldValue) {
+    notBlank(blankErrorStringDesc)
+    matchRegex(wrongEmailErrorStringDesc, EMAIL_REGEX)
+}
+```
+
+To create a new function for validation monad, you need to create an extension function of class
+`ValidationResult` using builder `nextValidation`. For example, this is how the ready-made function
+for checking `String` values for blankness looks like:
+
+```kotlin
+fun ValidationResult<String>.notBlank(errorText: StringDesc) = nextValidation { value ->
+    if (value.isNotBlank()) {
+        ValidationResult.success(value)
+    } else {
+        ValidationResult.failure(errorText)
+    }
+}
+```
+
+All the ready-made validation functions of the library can be found in the source codes in the files
+`AnyValidations.kt` for `Any` class and `StringValidations.kt` for `String` class.
+
+To simplify of adding validation to the `FormField` object (without mapping of a `LiveData`
+objects) you can use the builder-function `fieldValidation`:
+
+```kotlin
+val passwordField = FormField<String, StringDesc>(
+    initialValue = "",
+    validation = fieldValidation {
+        notBlank(MR.strings.cant_be_blank.desc())
+        minLength(MR.strings.must_contain_more_char.desc(), 4)
+    }
+)
 ```
 
 ## Samples
