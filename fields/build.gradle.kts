@@ -36,28 +36,6 @@ publishing {
         }
     }
 
-    // Make sure to avoid duplicate publications
-    val publicationsFromMainHost = listOf(
-        "wasm32",
-        "jvm",
-        "js",
-        "kotlinMultiplatform",
-        "androidRelease",
-        "androidDebug",
-        "linuxArm64",
-        "linuxArm32Hfp",
-        "linuxX64"
-    )
-
-    publications
-        .matching { it.name in publicationsFromMainHost }
-        .all {
-            val targetPublication = this@all
-            tasks.withType<AbstractPublishToMaven>()
-                .matching { it.publication == targetPublication }
-                .all { onlyIf { System.getProperty("IS_MAIN_HOST") == "true" } }
-        }
-
     publications.withType<MavenPublication> {
         // Stub javadoc.jar artifact
         artifact(javadocJar.get())
