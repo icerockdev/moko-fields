@@ -3,7 +3,7 @@
  */
 
 object Deps {
-    private const val kotlinTestVersion = "1.4.21"
+    private const val kotlinTestVersion = "1.4.31"
 
     private const val androidAppCompatVersion = "1.1.0"
     private const val materialDesignVersion = "1.0.0"
@@ -11,10 +11,10 @@ object Deps {
     private const val androidCoreTestingVersion = "2.1.0"
 
     private const val coroutinesVersion = "1.4.2"
-    private const val mokoResourcesVersion = "0.13.2"
-    private const val mokoMvvmVersion = "0.9.1"
-    private const val mokoTestVersion = "0.1.0"
-    const val mokoFieldsVersion = "0.7.0"
+    private const val mokoResourcesVersion = "0.15.1"
+    private const val mokoMvvmVersion = "0.9.2"
+    private const val mokoTestVersion = "0.2.1"
+    const val mokoFieldsVersion = "0.7.1"
 
     object Android {
         const val compileSdk = 30
@@ -29,6 +29,7 @@ object Deps {
         val kotlinKapt = GradlePlugin(id = "kotlin-kapt")
         val kotlinAndroid = GradlePlugin(id = "kotlin-android")
         val mavenPublish = GradlePlugin(id = "org.gradle.maven-publish")
+        val signing = GradlePlugin(id = "signing")
 
         val mobileMultiplatform = GradlePlugin(id = "dev.icerock.mobile.multiplatform")
         val iosFramework = GradlePlugin(id = "dev.icerock.mobile.multiplatform.ios-framework")
