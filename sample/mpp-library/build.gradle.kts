@@ -3,19 +3,24 @@
  */
 
 plugins {
-    plugin(Deps.Plugins.androidLibrary)
-    plugin(Deps.Plugins.kotlinMultiplatform)
-    plugin(Deps.Plugins.mobileMultiplatform)
-    plugin(Deps.Plugins.mokoResources)
-    plugin(Deps.Plugins.iosFramework)
+    id("com.android.library")
+    id("android-base-convention")
+    id("detekt-convention")
+    id("org.jetbrains.kotlin.multiplatform")
+    id("dev.icerock.mobile.multiplatform.android-manifest")
+    id("dev.icerock.mobile.multiplatform-resources")
+    id("dev.icerock.mobile.multiplatform.ios-framework")
 }
-
+kotlin {
+    android()
+    ios()
+}
 dependencies {
-    commonMainApi(Deps.Libs.MultiPlatform.coroutines)
-    commonMainApi(Deps.Libs.MultiPlatform.mokoResources.common)
-    commonMainApi(Deps.Libs.MultiPlatform.mokoMvvmCore.common)
-    commonMainApi(Deps.Libs.MultiPlatform.mokoMvvmLiveData.common)
-    commonMainApi(Deps.Libs.MultiPlatform.mokoFields)
+    commonMainApi(libs.coroutines)
+    commonMainApi(libs.mokoResources)
+    commonMainApi(libs.mokoMvvmCore)
+    commonMainApi(libs.mokoMvvmLiveData)
+    commonMainApi(projects.fields)
 }
 
 multiplatformResources {
@@ -23,8 +28,8 @@ multiplatformResources {
 }
 
 framework {
-    export(project(":fields"))
-    export(Deps.Libs.MultiPlatform.mokoResources)
-    export(Deps.Libs.MultiPlatform.mokoMvvmCore)
-    export(Deps.Libs.MultiPlatform.mokoMvvmLiveData)
+    export(projects.fields)
+    export(libs.mokoResources)
+    export(libs.mokoMvvmCore)
+    export(libs.mokoMvvmLiveData)
 }
