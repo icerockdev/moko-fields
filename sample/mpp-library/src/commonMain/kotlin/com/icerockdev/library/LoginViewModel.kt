@@ -27,6 +27,7 @@ class LoginViewModel(
             matchRegex(MR.strings.wrong_format.desc(), EMAIL_REGEX)
         }
     })
+    @Suppress("MagicNumber")
     val passwordField = FormField<String, StringDesc>(
         initialValue = "",
         validation = fieldValidation {
