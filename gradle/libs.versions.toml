@@ -1,0 +1,22 @@
+[versions]
+androidAppCompatVersion = "1.2.0"
+materialDesignVersion = "1.0.0"
+androidLifecycleVersion = "2.1.0"
+coroutinesVersion = "1.5.0-native-mt"
+mokoResourcesVersion = "0.16.1"
+mokoMvvmVersion = "0.11.0"
+mokoTestVersion = "0.4.0"
+mokoFieldsVersion = "0.8.0"
+
+[libraries]
+appCompat = { module = "androidx.appcompat:appcompat", version.ref = "androidAppCompatVersion" }
+material = { module = "com.google.android.material:material", version.ref = "materialDesignVersion" }
+lifecycle = { module = "androidx.lifecycle:lifecycle-extensions", version.ref = "androidLifecycleVersion" }
+mokoMvvmDataBinding = { module = "dev.icerock.moko:mvvm-databinding", version.ref = "mokoMvvmVersion" }
+coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutinesVersion" }
+mokoResources = { module = "dev.icerock.moko:resources", version.ref = "mokoResourcesVersion" }
+mokoMvvmCore = { module = "dev.icerock.moko:mvvm-core", version.ref = "mokoMvvmVersion" }
+mokoMvvmLiveData = { module = "dev.icerock.moko:mvvm-livedata", version.ref = "mokoMvvmVersion" }
+mokoTest = { module = "dev.icerock.moko:test-core", version.ref = "mokoTestVersion" }
+
+

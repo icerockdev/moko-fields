@@ -8,31 +8,15 @@ buildscript {
         google()
     }
     dependencies {
-        plugin(Deps.Plugins.mokoResources)
+        classpath("dev.icerock.moko:resources-generator:0.16.1")
+        classpath(":fields-build-logic")
     }
 }
 
 allprojects {
-    repositories {
-        mavenCentral()
-        google()
-
-        jcenter {
-            content {
-                includeGroup("org.jetbrains.trove4j")
-            }
-        }
-    }
-
-    plugins.withId(Deps.Plugins.androidLibrary.id) {
-        configure<com.android.build.gradle.LibraryExtension> {
-            compileSdkVersion(Deps.Android.compileSdk)
-
-            defaultConfig {
-                minSdkVersion(Deps.Android.minSdk)
-                targetSdkVersion(Deps.Android.targetSdk)
-            }
-        }
+    plugins.withId("org.gradle.maven-publish") {
+        group = "dev.icerock.moko"
+        version = libs.versions.mokoFieldsVersion.get()
     }
 }
 
