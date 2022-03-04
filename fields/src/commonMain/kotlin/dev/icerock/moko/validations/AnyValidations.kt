@@ -14,7 +14,7 @@ fun <T : Any> ValidationResult<T?>.notNull(errorText: StringDesc) = nextValidati
     }
 }
 
-fun <T : Any> ValidationResult<T?>.isEqual(errorText: StringDesc, reference: T?) = nextValidation { value ->
+fun <T> ValidationResult<T>.isEqual(errorText: StringDesc, reference: T) = nextValidation { value ->
     if (value == reference) {
         ValidationResult.success(value)
     } else {
