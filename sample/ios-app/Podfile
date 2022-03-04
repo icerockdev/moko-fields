@@ -11,9 +11,5 @@ platform :ios, '11.0'
 install! 'cocoapods', :disable_input_output_paths => true
 
 target 'TestProj' do
-  # MultiPlatformLibrary
-  # для корректной установки фреймворка нужно сначала скомпилировать котлин библиотеку - compile-kotlin-framework.sh (в корневой директории репозитория)
   pod 'MultiPlatformLibrary', :path => '../mpp-library'
-  pod 'MultiPlatformLibraryMvvm', :git => 'https://github.com/icerockdev/moko-mvvm.git', :tag => 'release/0.11.0'
-  pod 'AlamofireImage', '4.1.0'
 end

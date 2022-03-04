@@ -24,7 +24,7 @@ fun ValidationResult<String>.notBlank(errorText: StringDesc) = nextValidation { 
 
 fun ValidationResult<String>.minLength(errorText: StringDesc, minLength: Int = 0) =
     nextValidation { value ->
-        if(value.length < minLength) {
+        if (value.length < minLength) {
             ValidationResult.failure(errorText)
         } else {
             ValidationResult.success(value)
@@ -33,7 +33,7 @@ fun ValidationResult<String>.minLength(errorText: StringDesc, minLength: Int = 0
 
 fun ValidationResult<String>.maxLength(errorText: StringDesc, maxLength: Int = 0) =
     nextValidation { value ->
-        if(value.length > maxLength) {
+        if (value.length > maxLength) {
             ValidationResult.failure(errorText)
         } else {
             ValidationResult.success(value)

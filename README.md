@@ -37,7 +37,7 @@ allprojects {
 project build.gradle
 ```groovy
 dependencies {
-    commonMainApi("dev.icerock.moko:fields:0.8.0")
+    commonMainApi("dev.icerock.moko:fields:0.9.0")
 }
 ```
 

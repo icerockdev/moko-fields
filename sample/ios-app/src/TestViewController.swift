@@ -4,13 +4,13 @@
 
 import UIKit
 import MultiPlatformLibrary
-import MultiPlatformLibraryMvvm
-import SkyFloatingLabelTextField
 
 class TestViewController: UIViewController {
     
-    @IBOutlet private var emailField: SkyFloatingLabelTextField!
-    @IBOutlet private var passwordField: SkyFloatingLabelTextField!
+    @IBOutlet private var emailField: UITextField!
+    @IBOutlet private var emailErrorLabel: UILabel!
+    @IBOutlet private var passwordField: UITextField!
+    @IBOutlet private var passwordErrorLabel: UILabel!
     
     private var viewModel: LoginViewModel!
     
@@ -22,10 +22,10 @@ class TestViewController: UIViewController {
         )
         
         emailField.bindTextTwoWay(liveData: viewModel.emailField.data)
-        emailField.bindError(liveData: viewModel.emailField.error)
+        emailErrorLabel.bindText(liveData: viewModel.emailField.error)
         
         passwordField.bindTextTwoWay(liveData: viewModel.passwordField.data)
-        passwordField.bindError(liveData: viewModel.passwordField.error)
+        passwordErrorLabel.bindText(liveData: viewModel.passwordField.error)
     }
     
     @IBAction func onLoginPressed() {
