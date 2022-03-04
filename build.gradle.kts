@@ -17,13 +17,8 @@ buildscript {
     }
 }
 
+val mokoVersion = libs.versions.mokoFieldsVersion.get()
 allprojects {
-    plugins.withId("org.gradle.maven-publish") {
-        group = "dev.icerock.moko"
-        version = libs.versions.mokoFieldsVersion.get()
-    }
-}
-
-tasks.register("clean", Delete::class).configure {
-    delete(rootProject.buildDir)
+    this.group = "dev.icerock.moko"
+    this.version = mokoVersion
 }
