@@ -4,22 +4,22 @@
 
 plugins {
     id("com.android.library")
-    id("android-base-convention")
-    id("detekt-convention")
+    id("dev.icerock.moko.gradle.android.base")
     id("org.jetbrains.kotlin.multiplatform")
-    id("dev.icerock.mobile.multiplatform.android-manifest")
+    id("dev.icerock.mobile.multiplatform.targets")
     id("dev.icerock.mobile.multiplatform-resources")
     id("dev.icerock.mobile.multiplatform.ios-framework")
+    id("dev.icerock.moko.gradle.detekt")
+    id("dev.icerock.moko.gradle.tests")
+    id("dev.icerock.moko.kswift")
 }
-kotlin {
-    android()
-    ios()
-}
+
 dependencies {
     commonMainApi(libs.coroutines)
     commonMainApi(libs.mokoResources)
     commonMainApi(libs.mokoMvvmCore)
     commonMainApi(libs.mokoMvvmLiveData)
+    commonMainApi(libs.mokoMvvmLiveDataResources)
     commonMainApi(projects.fields)
 }
 
@@ -32,4 +32,9 @@ framework {
     export(libs.mokoResources)
     export(libs.mokoMvvmCore)
     export(libs.mokoMvvmLiveData)
+    export(libs.mokoMvvmLiveDataResources)
+}
+
+kswift {
+    install(dev.icerock.moko.kswift.plugin.feature.PlatformExtensionFunctionsFeature)
 }

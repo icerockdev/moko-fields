@@ -4,7 +4,12 @@
 
 package dev.icerock.moko.fields
 
-import dev.icerock.moko.mvvm.livedata.*
+import dev.icerock.moko.mvvm.livedata.LiveData
+import dev.icerock.moko.mvvm.livedata.MediatorLiveData
+import dev.icerock.moko.mvvm.livedata.MutableLiveData
+import dev.icerock.moko.mvvm.livedata.distinct
+import dev.icerock.moko.mvvm.livedata.map
+import dev.icerock.moko.mvvm.livedata.mediatorOf
 
 open class FormField<D, E>(initialValue: D, validation: (LiveData<D>) -> LiveData<E?>) {
 
@@ -21,7 +26,7 @@ open class FormField<D, E>(initialValue: D, validation: (LiveData<D>) -> LiveDat
     private val showValidationError = MutableLiveData(false)
 
     val error: LiveData<E?> by lazy {
-        validationError.mergeWith(showValidationError) { error, show ->
+        mediatorOf(validationError, showValidationError) { error, show ->
             if (show) error else null
         }
     }

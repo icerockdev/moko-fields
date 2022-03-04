@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zIh-nI-gcX">
-    <device id="retina4_0" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zIh-nI-gcX">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,7 +12,7 @@
             <objects>
                 <navigationController id="zIh-nI-gcX" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aGe-Yj-KQZ">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -28,7 +26,7 @@
         <!--Test-->
         <scene sceneID="B5V-K5-FDE">
             <objects>
-                <viewController id="TTy-86-aNs" customClass="TestViewController" customModule="mokoSampleResources" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="TTy-86-aNs" customClass="TestViewController" customModule="mokoSampleFields" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gcA-zH-akF"/>
                         <viewControllerLayoutGuide type="bottom" id="gTY-6T-yQv"/>
@@ -37,48 +35,66 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="icY-c5-Xe5" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="16" y="80" width="288" height="30"/>
-                                <nil key="textColor"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="icY-c5-Xe5">
+                                <rect key="frame" x="16" y="60" width="288" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Email"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J0H-Mx-Sbx" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="16" y="118" width="288" height="30"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="keG-xx-GLD">
+                                <rect key="frame" x="16" y="102" width="288" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J0H-Mx-Sbx">
+                                <rect key="frame" x="16" y="128" width="288" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Password"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AXl-BK-rvZ">
-                                <rect key="frame" x="16" y="156" width="288" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AXl-BK-rvZ">
+                                <rect key="frame" x="16" y="196" width="288" height="30"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="onLoginPressed" destination="TTy-86-aNs" eventType="touchUpInside" id="kLe-8C-B8g"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pmr-79-9s7">
+                                <rect key="frame" x="16" y="170" width="288" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="icY-c5-Xe5" firstAttribute="leading" secondItem="KxK-oh-5KO" secondAttribute="leadingMargin" id="A4H-ZA-mxw"/>
-                            <constraint firstItem="J0H-Mx-Sbx" firstAttribute="top" secondItem="icY-c5-Xe5" secondAttribute="bottom" constant="8" id="J9d-Nm-ELP"/>
+                            <constraint firstItem="keG-xx-GLD" firstAttribute="leading" secondItem="KxK-oh-5KO" secondAttribute="leadingMargin" id="Hvw-bb-byt"/>
                             <constraint firstItem="AXl-BK-rvZ" firstAttribute="leading" secondItem="KxK-oh-5KO" secondAttribute="leadingMargin" id="R99-LB-8v8"/>
                             <constraint firstItem="J0H-Mx-Sbx" firstAttribute="leading" secondItem="KxK-oh-5KO" secondAttribute="leadingMargin" id="YwS-je-fZY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="icY-c5-Xe5" secondAttribute="trailing" id="bwo-1H-Wav"/>
                             <constraint firstAttribute="trailingMargin" secondItem="AXl-BK-rvZ" secondAttribute="trailing" id="eFg-qS-jAV"/>
-                            <constraint firstItem="AXl-BK-rvZ" firstAttribute="top" secondItem="J0H-Mx-Sbx" secondAttribute="bottom" constant="8" id="lNE-Xg-u53"/>
+                            <constraint firstItem="Pmr-79-9s7" firstAttribute="top" secondItem="J0H-Mx-Sbx" secondAttribute="bottom" constant="8" id="hWS-7V-eiv"/>
+                            <constraint firstItem="J0H-Mx-Sbx" firstAttribute="top" secondItem="keG-xx-GLD" secondAttribute="bottom" constant="8" id="hc2-L3-Lwd"/>
+                            <constraint firstItem="keG-xx-GLD" firstAttribute="top" secondItem="icY-c5-Xe5" secondAttribute="bottom" constant="8" id="mc0-QG-zFi"/>
                             <constraint firstAttribute="trailingMargin" secondItem="J0H-Mx-Sbx" secondAttribute="trailing" id="pU5-a7-Ijr"/>
+                            <constraint firstItem="Pmr-79-9s7" firstAttribute="leading" secondItem="KxK-oh-5KO" secondAttribute="leadingMargin" id="qSv-rF-zxj"/>
                             <constraint firstItem="icY-c5-Xe5" firstAttribute="top" secondItem="gcA-zH-akF" secondAttribute="bottom" constant="16" id="u1e-mB-WWk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Pmr-79-9s7" secondAttribute="trailing" id="u8f-ax-6uc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="keG-xx-GLD" secondAttribute="trailing" id="vVw-Fd-fkI"/>
+                            <constraint firstItem="AXl-BK-rvZ" firstAttribute="top" secondItem="Pmr-79-9s7" secondAttribute="bottom" constant="8" id="y99-vz-78U"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Test" id="0jM-60-fjM"/>
                     <connections>
+                        <outlet property="emailErrorLabel" destination="keG-xx-GLD" id="8OH-P4-Omj"/>
                         <outlet property="emailField" destination="icY-c5-Xe5" id="1Yu-YU-rRm"/>
+                        <outlet property="passwordErrorLabel" destination="Pmr-79-9s7" id="Kfp-N8-2IK"/>
                         <outlet property="passwordField" destination="J0H-Mx-Sbx" id="U3U-8D-a0L"/>
                     </connections>
                 </viewController>
@@ -87,4 +103,9 @@
             <point key="canvasLocation" x="-4297.5" y="-1482.0422535211267"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

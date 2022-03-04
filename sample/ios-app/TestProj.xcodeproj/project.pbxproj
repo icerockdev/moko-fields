@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2223D08027D24BA000DB5F95 /* dev_icerock_moko_mvvm-livedata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2223D07F27D24BA000DB5F95 /* dev_icerock_moko_mvvm-livedata.swift */; };
+		2223D08227D24D7500DB5F95 /* dev_icerock_moko_mvvm-livedata-resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2223D08127D24D7500DB5F95 /* dev_icerock_moko_mvvm-livedata-resources.swift */; };
 		2B70A10DE02726CA8E6981EB /* Pods_TestProj.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8D683A7C91DCD56058C7435 /* Pods_TestProj.framework */; };
 		45D74FCC22BFDDFD00CAB0C8 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D74FCB22BFDDFD00CAB0C8 /* TestViewController.swift */; };
 		45F4791D219463C7003D25FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45F47912219463C7003D25FA /* LaunchScreen.storyboard */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2223D07F27D24BA000DB5F95 /* dev_icerock_moko_mvvm-livedata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "dev_icerock_moko_mvvm-livedata.swift"; path = "../mpp-library/build/cocoapods/framework/MultiPlatformLibrarySwift/dev_icerock_moko_mvvm-livedata.swift"; sourceTree = "<group>"; };
+		2223D08127D24D7500DB5F95 /* dev_icerock_moko_mvvm-livedata-resources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "dev_icerock_moko_mvvm-livedata-resources.swift"; path = "../mpp-library/build/cocoapods/framework/MultiPlatformLibrarySwift/dev_icerock_moko_mvvm-livedata-resources.swift"; sourceTree = "<group>"; };
 		287627FF1F319065007FA12B /* mokoSampleFields.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mokoSampleFields.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45964D362282A1FD00C16658 /* mpp-library */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "mpp-library"; path = "../mpp-library"; sourceTree = "<group>"; };
 		45D74FCB22BFDDFD00CAB0C8 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
@@ -50,10 +54,20 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		2223D07E27D24B8900DB5F95 /* kswift */ = {
+			isa = PBXGroup;
+			children = (
+				2223D08127D24D7500DB5F95 /* dev_icerock_moko_mvvm-livedata-resources.swift */,
+				2223D07F27D24BA000DB5F95 /* dev_icerock_moko_mvvm-livedata.swift */,
+			);
+			name = kswift;
+			sourceTree = "<group>";
+		};
 		287627F61F319065007FA12B = {
 			isa = PBXGroup;
 			children = (
 				45964D362282A1FD00C16658 /* mpp-library */,
+				2223D07E27D24B8900DB5F95 /* kswift */,
 				45F47910219463C7003D25FA /* src */,
 				287628001F319065007FA12B /* Products */,
 				EE1ABB3E79CE541540D3155F /* Frameworks */,
@@ -217,8 +231,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2223D08227D24D7500DB5F95 /* dev_icerock_moko_mvvm-livedata-resources.swift in Sources */,
 				45D74FCC22BFDDFD00CAB0C8 /* TestViewController.swift in Sources */,
 				45F47922219463C7003D25FA /* AppDelegate.swift in Sources */,
+				2223D08027D24BA000DB5F95 /* dev_icerock_moko_mvvm-livedata.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +289,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4VU932NX78;
 				INFOPLIST_FILE = src/Info.plist;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.icerock.moko.sample.fields;
 				PRODUCT_NAME = mokoSampleFields;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -291,6 +308,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4VU932NX78;
 				INFOPLIST_FILE = src/Info.plist;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.icerock.moko.sample.fields;
 				PRODUCT_NAME = mokoSampleFields;
 				PROVISIONING_PROFILE_SPECIFIER = "";

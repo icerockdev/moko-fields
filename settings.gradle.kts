@@ -8,16 +8,8 @@ dependencyResolutionManagement {
     repositories {
         mavenCentral()
         google()
-
-        jcenter {
-            content {
-                includeGroup("org.jetbrains.kotlinx")
-            }
-        }
     }
 }
-
-includeBuild("fields-build-logic")
 
 include(":fields")
 include(":sample:android-app")

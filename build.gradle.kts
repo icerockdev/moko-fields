@@ -6,10 +6,14 @@ buildscript {
     repositories {
         mavenCentral()
         google()
+        gradlePluginPortal()
     }
     dependencies {
-        classpath("dev.icerock.moko:resources-generator:0.16.1")
-        classpath(":fields-build-logic")
+        classpath(libs.kotlinGradlePlugin)
+        classpath(libs.androidGradlePlugin)
+        classpath(libs.mokoGradlePlugin)
+        classpath(libs.mokoResourcesGradlePlugin)
+        classpath(libs.mokoKSwiftGradlePlugin)
     }
 }
 
