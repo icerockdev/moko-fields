@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="cant_be_blank">Field can\'t be blank</string>
+    <string name="wrong_format">Wrong format</string>
+    <string name="must_contain_more_char">Must contain more chars</string>
+</resources>
