@@ -177,7 +177,7 @@ val passwordField = FormField<String, StringDesc>(
 More examples can be found in the [sample directory](sample).
 
 ## Set Up Locally 
-- In [fields directory](fields) contains `fields` library;
+- In [fields directory](fields-livedata) contains `fields` library;
 - In [sample directory](sample) contains samples on android, ios & mpp-library connected to apps.
 
 ## Contributing
