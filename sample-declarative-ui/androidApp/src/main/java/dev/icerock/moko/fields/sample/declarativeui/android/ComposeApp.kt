@@ -2,7 +2,7 @@
  * Copyright 2022 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
  */
 
-package dev.icerock.moko.mvvm.sample.declarativeui.android
+package dev.icerock.moko.fields.sample.declarativeui.android
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavOptions
@@ -17,7 +17,7 @@ fun ComposeApp() {
 
     NavHost(navController = navController, startDestination = "login") {
         composable("login") {
-            Text(text = "Login")
+            LoginScreen()
         }
     }
 }

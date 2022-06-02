@@ -2,11 +2,10 @@ import SwiftUI
 import MultiPlatformLibrary
 import Combine
 
+
 struct ContentView: View {
-    @State var isAuthorized: Bool = true
-    
     var body: some View {
-        Text("Hello World")
+        LoginScreen(viewModel: LoginViewModel())
 	}
 }
 

@@ -121,8 +121,14 @@ afterEvaluate {
                     targetDir.mkdirs()
                     swiftGenDir.copyRecursively(targetDir, overwrite = true)
                 }
+            }).doLast(object : Action<Task> {
+                override fun execute(t: Task) {
+                    val to = File(rootDir, "sample-declarative-ui/iosApp/iosApp/fromMpp")
+                    swiftGenDir.copyRecursively(to, overwrite = true)
+                }
             })
         }
+
 }
 
 kswift {

@@ -8,6 +8,8 @@ package dev.icerock.moko.fields.sample.declarativeui
 
 import dev.icerock.moko.fields.StateFormField
 import dev.icerock.moko.fields.validate
+import dev.icerock.moko.mvvm.flow.CFlow
+import dev.icerock.moko.mvvm.flow.cFlow
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.desc.desc
@@ -17,13 +19,12 @@ import dev.icerock.moko.validations.matchRegex
 import dev.icerock.moko.validations.minLength
 import dev.icerock.moko.validations.notBlank
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.receiveAsFlow
 
 class LoginViewModel : ViewModel() {
 
     private val _actions: Channel<Action> = Channel(Channel.BUFFERED)
-    val actions: Flow<Action> get() = _actions.receiveAsFlow()
+    val actions: CFlow<Action> get() = _actions.receiveAsFlow().cFlow()
 
     val emailField: StateFormField<String, StringDesc> = StateFormField(
         scope = viewModelScope,

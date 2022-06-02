@@ -15,7 +15,7 @@ android {
         compose = true
     }
     defaultConfig {
-        applicationId = "dev.icerock.moko.mvvm.sample.declarativeui.android"
+        applicationId = "dev.icerock.moko.fields.sample.declarativeui.android"
         minSdk = 21
         targetSdk = 32
         versionCode = 1
@@ -32,7 +32,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":shared"))
+    implementation(project(":sample-declarative-ui:shared"))
 
     implementation("androidx.compose.ui:ui:$composeVersion")
     // Tooling support (Previews, etc.)
@@ -48,5 +48,5 @@ dependencies {
 
     implementation("androidx.activity:activity-compose:1.4.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1")
-    implementation("androidx.navigation:navigation-compose:2.4.1")
+    implementation("androidx.navigation:navigation-compose:2.4.2")
 }
