@@ -2,8 +2,9 @@
  * Copyright 2019 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
  */
 
-package dev.icerock.moko.fields
+package dev.icerock.moko.fields.livedata
 
+import dev.icerock.moko.fields.core.FormField
 import dev.icerock.moko.mvvm.livedata.LiveData
 import dev.icerock.moko.mvvm.livedata.MediatorLiveData
 import dev.icerock.moko.mvvm.livedata.MutableLiveData
@@ -14,7 +15,7 @@ import dev.icerock.moko.mvvm.livedata.mediatorOf
 open class FormField<D, E>(
     initialValue: D,
     validation: (LiveData<D>) -> LiveData<E?>
-): AnyFormField<D, E> {
+) : FormField<D, E> {
 
     open val data = MutableLiveData(initialValue)
 
@@ -38,17 +39,15 @@ open class FormField<D, E>(
         validationError.map { it == null }
     }
 
-    override val isValidValue: Boolean
-        get() = isValid.value
-
     override fun setError(error: E?) {
         validationError.value = error
     }
 
     override fun value(): D = data.value
 
-    override fun validate() {
+    override fun validate(): Boolean {
         showValidationError.value = true
+        return isValid.value
     }
 }
 

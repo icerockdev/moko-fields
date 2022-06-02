@@ -4,7 +4,11 @@
 
 package dev.icerock.moko.validations
 
-import dev.icerock.moko.fields.StateFormField
+import dev.icerock.moko.fields.flow.FormField
+import dev.icerock.moko.fields.core.validations.ValidationResult
+import dev.icerock.moko.fields.core.validations.matchRegex
+import dev.icerock.moko.fields.core.validations.notBlank
+import dev.icerock.moko.fields.core.validations.fieldValidation
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.desc.desc
 import dev.icerock.moko.test.AndroidArchitectureInstantTaskExecutorRule
@@ -47,10 +51,8 @@ class ValidationBuildersTest {
     }
 
     private fun testValidationWithForm(validation: (String) -> StringDesc?) {
-        val field = StateFormField<String, StringDesc>(
-            scope = coroutineScope,
-            initialValue = "",
-            validationTransform = validation
+        val field = FormField<String, StringDesc>(
+            scope = coroutineScope, initialValue = "", validationTransform = validation
         )
 
         field.data.value = ""

@@ -4,6 +4,14 @@
 
 package dev.icerock.moko.validations
 
+import dev.icerock.moko.fields.core.validations.ValidationResult
+import dev.icerock.moko.fields.core.validations.containedIn
+import dev.icerock.moko.fields.core.validations.matchRegex
+import dev.icerock.moko.fields.core.validations.maxLength
+import dev.icerock.moko.fields.core.validations.minLength
+import dev.icerock.moko.fields.core.validations.notBlank
+import dev.icerock.moko.fields.core.validations.notEmpty
+import dev.icerock.moko.fields.core.validations.validate
 import dev.icerock.moko.resources.desc.desc
 import dev.icerock.moko.test.AndroidArchitectureInstantTaskExecutorRule
 import dev.icerock.moko.test.TestRule

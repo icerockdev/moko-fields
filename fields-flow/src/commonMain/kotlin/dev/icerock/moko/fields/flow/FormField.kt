@@ -1,7 +1,9 @@
-package dev.icerock.moko.fields
+package dev.icerock.moko.fields.flow
 
+import dev.icerock.moko.fields.core.FormField
 import dev.icerock.moko.mvvm.flow.CMutableStateFlow
 import dev.icerock.moko.mvvm.flow.CStateFlow
+import dev.icerock.moko.mvvm.flow.cMutableStateFlow
 import dev.icerock.moko.mvvm.flow.cStateFlow
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -12,18 +14,15 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
 
-open class StateFormField<D, E>(
-    scope: CoroutineScope,
-    initialValue: D,
-    validationTransform: (D) -> E?
-): AnyFormField<D, E> {
+open class FormField<D, E>(
+    scope: CoroutineScope, initialValue: D, validationTransform: (D) -> E?
+) : FormField<D, E> {
 
     val data: CMutableStateFlow<D> =
-        CMutableStateFlow(
-            MutableStateFlow(initialValue)
-        )
+        MutableStateFlow(initialValue).cMutableStateFlow()
 
-    private val validationError: MutableStateFlow<E?> = MutableStateFlow(null)
+    private val validationError: MutableStateFlow<E?> =
+        MutableStateFlow(null)
 
     private val showValidationError: MutableStateFlow<Boolean> =
         MutableStateFlow(false)
@@ -31,16 +30,11 @@ open class StateFormField<D, E>(
     val error: CStateFlow<E?> =
         combine(validationError, showValidationError) { error, show ->
             if (show) error else null
-        }.stateIn(scope, SharingStarted.Eagerly, null)
-            .cStateFlow()
+        }.stateIn(scope, SharingStarted.Eagerly, null).cStateFlow()
 
     val isValid: CStateFlow<Boolean> =
         validationError.map { it == null }
-            .stateIn(scope, SharingStarted.Eagerly, true)
-            .cStateFlow()
-
-    override val isValidValue: Boolean
-        get() = isValid.value
+            .stateIn(scope, SharingStarted.Eagerly, true).cStateFlow()
 
     init {
         data.map { validationTransform(it) }
@@ -54,7 +48,8 @@ open class StateFormField<D, E>(
 
     override fun value(): D = data.value
 
-    override fun validate() {
+    override fun validate(): Boolean {
         showValidationError.value = true
+        return isValid.value
     }
 }

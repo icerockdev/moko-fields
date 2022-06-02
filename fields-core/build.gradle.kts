@@ -10,7 +10,6 @@ plugins {
 }
 
 dependencies {
-    commonMainApi(libs.coroutines)
     commonMainApi(libs.mokoResources)
 
     commonTestApi(libs.mokoTest)

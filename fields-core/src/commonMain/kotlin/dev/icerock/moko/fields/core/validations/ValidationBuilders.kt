@@ -1,11 +1,11 @@
-package dev.icerock.moko.validations
+package dev.icerock.moko.fields.core.validations
 
 import dev.icerock.moko.resources.desc.StringDesc
 
 @Deprecated(
     message = "Deprecated in favor of new DSL-like fieldValidation function",
     level = DeprecationLevel.WARNING,
-    replaceWith = ReplaceWith("fieldValidation", "dev.icerock.moko.validations")
+    replaceWith = ReplaceWith("fieldValidation", "dev.icerock.moko.fields.core.validations")
 )
 fun <D> fieldValidationBlock(
     block: ValidationResult<D>.() -> ValidationResult<D>
