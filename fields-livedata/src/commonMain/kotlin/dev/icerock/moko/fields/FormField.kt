@@ -11,10 +11,10 @@ import dev.icerock.moko.mvvm.livedata.distinct
 import dev.icerock.moko.mvvm.livedata.map
 import dev.icerock.moko.mvvm.livedata.mediatorOf
 
-open class LiveDataFormField<D, E>(
+open class FormField<D, E>(
     initialValue: D,
     validation: (LiveData<D>) -> LiveData<E?>
-): FormField {
+): AnyFormField {
 
     open val data = MutableLiveData(initialValue)
 

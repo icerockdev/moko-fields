@@ -16,7 +16,7 @@ open class StateFormField<D, E>(
     scope: CoroutineScope,
     initialValue: D,
     validationTransform: (D) -> E?
-): FormField {
+): AnyFormField {
 
     val data: CMutableStateFlow<D> =
         CMutableStateFlow(

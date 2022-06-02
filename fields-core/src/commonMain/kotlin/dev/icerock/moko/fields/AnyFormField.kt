@@ -1,6 +1,6 @@
 package dev.icerock.moko.fields
 
-interface FormField {
+interface AnyFormField {
     fun validate()
     val isValidValue: Boolean
 }
