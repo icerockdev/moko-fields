@@ -15,7 +15,9 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
 
 open class FormField<D, E>(
-    scope: CoroutineScope, initialValue: D, validationTransform: (D) -> E?
+    scope: CoroutineScope,
+    initialValue: D,
+    validationTransform: (D) -> E?
 ) : FormField<D, E> {
 
     val data: CMutableStateFlow<D> =
