@@ -14,7 +14,7 @@ import dev.icerock.moko.mvvm.livedata.mediatorOf
 open class FormField<D, E>(
     initialValue: D,
     validation: (LiveData<D>) -> LiveData<E?>
-): AnyFormField {
+): AnyFormField<D, E> {
 
     open val data = MutableLiveData(initialValue)
 
@@ -41,11 +41,11 @@ open class FormField<D, E>(
     override val isValidValue: Boolean
         get() = isValid.value
 
-    fun setError(error: E?) {
+    override fun setError(error: E?) {
         validationError.value = error
     }
 
-    fun value(): D = data.value
+    override fun value(): D = data.value
 
     override fun validate() {
         showValidationError.value = true

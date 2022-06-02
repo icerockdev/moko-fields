@@ -16,7 +16,7 @@ open class StateFormField<D, E>(
     scope: CoroutineScope,
     initialValue: D,
     validationTransform: (D) -> E?
-): AnyFormField {
+): AnyFormField<D, E> {
 
     val data: CMutableStateFlow<D> =
         CMutableStateFlow(
@@ -48,11 +48,11 @@ open class StateFormField<D, E>(
             .launchIn(scope)
     }
 
-    fun setError(error: E?) {
+    override fun setError(error: E?) {
         validationError.value = error
     }
 
-    fun value(): D = data.value
+    override fun value(): D = data.value
 
     override fun validate() {
         showValidationError.value = true
