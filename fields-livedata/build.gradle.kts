@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
+ * Copyright 2022 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
  */
 
 plugins {
@@ -10,8 +10,8 @@ plugins {
 }
 
 dependencies {
-    commonMainApi(libs.mokoMvvmLiveData)
     commonMainApi(projects.fieldsCore)
+    commonMainApi(libs.mokoMvvmLiveData)
 
     commonTestApi(libs.mokoTest)
 }
