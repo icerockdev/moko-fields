@@ -2,7 +2,7 @@
  * Copyright 2022 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
  */
 
-package dev.icerock.moko.fields.livedata
+package dev.icerock.moko.fields.flow
 
 import dev.icerock.moko.fields.core.FormField
 import dev.icerock.moko.mvvm.flow.CMutableStateFlow
@@ -10,6 +10,7 @@ import dev.icerock.moko.mvvm.flow.CStateFlow
 import dev.icerock.moko.mvvm.flow.cMutableStateFlow
 import dev.icerock.moko.mvvm.flow.cStateFlow
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
@@ -21,7 +22,7 @@ import kotlinx.coroutines.flow.stateIn
 open class FormField<D, E>(
     scope: CoroutineScope,
     initialValue: D,
-    validationTransform: (D) -> E?
+    validation: (Flow<D>) -> Flow<E?>
 ) : FormField<D, E> {
 
     val data: CMutableStateFlow<D> =
@@ -43,7 +44,7 @@ open class FormField<D, E>(
             .stateIn(scope, SharingStarted.Eagerly, true).cStateFlow()
 
     init {
-        data.map { validationTransform(it) }
+        validation(data)
             .onEach { validationError.value = it }
             .launchIn(scope)
     }
@@ -57,5 +58,11 @@ open class FormField<D, E>(
     override fun validate(): Boolean {
         showValidationError.value = true
         return isValid.value
+    }
+}
+
+fun <D, E> flowBlock(block: (D) -> E?): ((Flow<D>) -> Flow<E?>) {
+    return { flow ->
+        flow.map { block(it) }
     }
 }

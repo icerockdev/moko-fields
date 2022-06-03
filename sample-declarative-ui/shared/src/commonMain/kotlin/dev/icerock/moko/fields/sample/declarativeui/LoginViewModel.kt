@@ -13,11 +13,12 @@ import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.desc.desc
 import dev.icerock.moko.fields.core.validations.ValidationResult
-import dev.icerock.moko.fields.core.validations.fieldValidation
 import dev.icerock.moko.fields.core.validations.matchRegex
 import dev.icerock.moko.fields.core.validations.minLength
 import dev.icerock.moko.fields.core.validations.notBlank
 import dev.icerock.moko.fields.flow.FormField
+import dev.icerock.moko.fields.flow.flowBlock
+import dev.icerock.moko.fields.flow.validations.fieldValidation
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 
@@ -29,7 +30,7 @@ class LoginViewModel : ViewModel() {
     val emailField: FormField<String, StringDesc> = FormField(
         scope = viewModelScope,
         initialValue = "",
-        validationTransform = { email ->
+        validation = flowBlock { email ->
             ValidationResult.of(email) {
                 notBlank(MR.strings.cant_be_blank.desc())
                 matchRegex(MR.strings.wrong_format.desc(), EMAIL_REGEX)
@@ -41,7 +42,7 @@ class LoginViewModel : ViewModel() {
     val passwordField: FormField<String, StringDesc> = FormField(
         scope = viewModelScope,
         initialValue = "",
-        validationTransform = fieldValidation {
+        validation = fieldValidation {
             notBlank(MR.strings.cant_be_blank.desc())
             minLength(MR.strings.must_contain_more_char.desc(), 4)
         }

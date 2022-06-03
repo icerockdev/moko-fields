@@ -9,4 +9,4 @@ package dev.icerock.moko.fields
     replaceWith = ReplaceWith("FormField", "dev.icerock.moko.fields.livedata"),
     level = DeprecationLevel.WARNING
 )
-typealias FormField<D,E> = dev.icerock.moko.fields.livedata.FormField<D,E>
+typealias FormField<D, E> = dev.icerock.moko.fields.livedata.FormField<D, E>

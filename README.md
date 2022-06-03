@@ -153,7 +153,7 @@ class LoginViewModel : ViewModel() {
     val emailField: FormField<String, StringDesc> = FormField(
         scope = viewModelScope,
         initialValue = "",
-        validationTransform = { email ->
+        validation = flowBlock { email ->
             ValidationResult.of(email) {
                 notBlank(MR.strings.cant_be_blank.desc())
                 matchRegex(MR.strings.wrong_format.desc(), EMAIL_REGEX)
@@ -165,7 +165,7 @@ class LoginViewModel : ViewModel() {
     val passwordField: FormField<String, StringDesc> = FormField(
         scope = viewModelScope,
         initialValue = "",
-        validationTransform = fieldValidation {
+        validation = fieldValidation {
             notBlank(MR.strings.cant_be_blank.desc())
             minLength(MR.strings.must_contain_more_char.desc(), 4)
         }

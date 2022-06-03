@@ -4,17 +4,18 @@
 
 package dev.icerock.moko.fields.flow.validations
 
-import dev.icerock.moko.fields.livedata.FormField
 import dev.icerock.moko.fields.core.validations.ValidationResult
 import dev.icerock.moko.fields.core.validations.matchRegex
 import dev.icerock.moko.fields.core.validations.notBlank
-import dev.icerock.moko.fields.core.validations.fieldValidation
+import dev.icerock.moko.fields.flow.FormField
+import dev.icerock.moko.fields.flow.flowBlock
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.desc.desc
 import dev.icerock.moko.test.AndroidArchitectureInstantTaskExecutorRule
 import dev.icerock.moko.test.TestRule
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
@@ -40,7 +41,7 @@ class ValidationBuildersTest {
 
     @Test
     fun `ValidationResult of DSL builder`() {
-        val validation: (String) -> StringDesc? = { value ->
+        val validation: (Flow<String>) -> Flow<StringDesc?> = flowBlock { value ->
             ValidationResult.of(value) {
                 notBlank(errorStr0)
                 matchRegex(errorStr1, Regex(pattern = "^[0-9]{3}\$"))
@@ -50,9 +51,9 @@ class ValidationBuildersTest {
         testValidationWithForm(validation)
     }
 
-    private fun testValidationWithForm(validation: (String) -> StringDesc?) {
+    private fun testValidationWithForm(validation: (Flow<String>) -> Flow<StringDesc?>) {
         val field = FormField<String, StringDesc>(
-            scope = coroutineScope, initialValue = "", validationTransform = validation
+            scope = coroutineScope, initialValue = "", validation = validation
         )
 
         field.data.value = ""
