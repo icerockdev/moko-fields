@@ -2,19 +2,19 @@
  * Copyright 2021 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
  */
 
-package dev.icerock.moko.validations
+package dev.icerock.moko.fields.flow.validations
 
 import dev.icerock.moko.fields.livedata.FormField
 import dev.icerock.moko.fields.core.validations.ValidationResult
 import dev.icerock.moko.fields.core.validations.matchRegex
 import dev.icerock.moko.fields.core.validations.notBlank
-import dev.icerock.moko.fields.livedata.validations.fieldValidation
-import dev.icerock.moko.mvvm.livedata.LiveData
-import dev.icerock.moko.mvvm.livedata.map
+import dev.icerock.moko.fields.core.validations.fieldValidation
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.desc.desc
 import dev.icerock.moko.test.AndroidArchitectureInstantTaskExecutorRule
 import dev.icerock.moko.test.TestRule
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
@@ -23,6 +23,8 @@ import kotlin.test.assertNull
 class ValidationBuildersTest {
     @get:TestRule
     val instantTaskExecutorRule = AndroidArchitectureInstantTaskExecutorRule()
+
+    val coroutineScope = CoroutineScope(Dispatchers.Unconfined)
 
     val errorStr0 = "Error0".desc()
     val errorStr1 = "Error1".desc()
@@ -38,20 +40,20 @@ class ValidationBuildersTest {
 
     @Test
     fun `ValidationResult of DSL builder`() {
-        val validation: (LiveData<String>) -> LiveData<StringDesc?> = { ld ->
-            ld.map { value ->
-                ValidationResult.of(value) {
-                    notBlank(errorStr0)
-                    matchRegex(errorStr1, Regex(pattern = "^[0-9]{3}\$"))
-                }
+        val validation: (String) -> StringDesc? = { value ->
+            ValidationResult.of(value) {
+                notBlank(errorStr0)
+                matchRegex(errorStr1, Regex(pattern = "^[0-9]{3}\$"))
             }
         }
 
         testValidationWithForm(validation)
     }
 
-    private fun testValidationWithForm(validation: (LiveData<String>) -> LiveData<StringDesc?>) {
-        val field = FormField<String, StringDesc>("", validation)
+    private fun testValidationWithForm(validation: (String) -> StringDesc?) {
+        val field = FormField<String, StringDesc>(
+            scope = coroutineScope, initialValue = "", validationTransform = validation
+        )
 
         field.data.value = ""
         field.validate()
@@ -76,4 +78,5 @@ class ValidationBuildersTest {
         assertNotNull(field.error.value)
         assertEquals(errorStr1, field.error.value)
     }
+
 }
