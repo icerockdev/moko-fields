@@ -11,9 +11,9 @@ coroutinesVersion = "1.6.0-native-mt"
 
 # moko
 mokoResourcesVersion = "0.18.0"
-mokoMvvmVersion = "0.12.0"
+mokoMvvmVersion = "0.13.0"
 mokoTestVersion = "0.6.1"
-mokoFieldsVersion = "0.9.0"
+mokoFieldsVersion = "0.10.0"
 
 [libraries]
 # android
@@ -27,8 +27,11 @@ coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version
 # moko
 mokoMvvmDataBinding = { module = "dev.icerock.moko:mvvm-databinding", version.ref = "mokoMvvmVersion" }
 mokoResources = { module = "dev.icerock.moko:resources", version.ref = "mokoResourcesVersion" }
+mokoResourcesCompose = { module = "dev.icerock.moko:resources-compose", version.ref = "mokoResourcesVersion" }
 mokoMvvmCore = { module = "dev.icerock.moko:mvvm-core", version.ref = "mokoMvvmVersion" }
 mokoMvvmLiveData = { module = "dev.icerock.moko:mvvm-livedata", version.ref = "mokoMvvmVersion" }
+mokoMvvmFlow = { module = "dev.icerock.moko:mvvm-flow", version.ref = "mokoMvvmVersion" }
+mokoMvvmFlowCompose = { module = "dev.icerock.moko:mvvm-flow-compose", version.ref = "mokoMvvmVersion" }
 mokoMvvmLiveDataResources = { module = "dev.icerock.moko:mvvm-livedata-resources", version.ref = "mokoMvvmVersion" }
 mokoTest = { module = "dev.icerock.moko:test-core", version.ref = "mokoTestVersion" }
 

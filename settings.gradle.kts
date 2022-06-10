@@ -11,6 +11,10 @@ dependencyResolutionManagement {
     }
 }
 
-include(":fields")
+include(":fields-core")
+include(":fields-flow")
+include(":fields-livedata")
 include(":sample:android-app")
 include(":sample:mpp-library")
+include(":sample-declarative-ui:shared")
+include(":sample-declarative-ui:androidApp")

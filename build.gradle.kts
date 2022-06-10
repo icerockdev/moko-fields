@@ -17,8 +17,17 @@ buildscript {
     }
 }
 
+apply(plugin = "dev.icerock.moko.gradle.publication.nexus")
+
 val mokoVersion = libs.versions.mokoFieldsVersion.get()
+
 allprojects {
-    this.group = "dev.icerock.moko"
-    this.version = mokoVersion
+    group = "dev.icerock.moko"
+    version = mokoVersion
+
+    configurations.configureEach {
+        resolutionStrategy {
+            force(rootProject.libs.coroutines)
+        }
+    }
 }

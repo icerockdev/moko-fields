@@ -17,7 +17,7 @@ This is a Kotlin MultiPlatform library that add form fields abstraction to imple
 
 ## Features
 - Input field abstraction;
-- Validation based on reactive approach (on `LiveData` from `moko-mvvm`).
+- Validation based on reactive approach (on `LiveData` from `moko-mvvm` or `Flow` from `kotlinx.coroutines`).
 
 ## Requirements
 - Gradle version 6.8+
@@ -37,11 +37,19 @@ allprojects {
 project build.gradle
 ```groovy
 dependencies {
-    commonMainApi("dev.icerock.moko:fields:0.9.0")
+    commonMainApi("dev.icerock.moko:fields-core:0.10.0")
+    commonMainApi("dev.icerock.moko:fields-livedata:0.10.0")
+    commonMainApi("dev.icerock.moko:fields-flow:0.10.0")
 }
 ```
 
+### Flow additions
+to work correctly on the iOS side, you need to export the 
+`mvvm-flow` and `mvvm-core` dependencies to the iOS framework.
+
 ## Usage
+
+### Live Data 
 Create `FormField` to text input with empty validation:
 ```kotlin
 val textField = FormField<String, StringDesc>("", { inputLiveData ->
@@ -119,6 +127,117 @@ emailField.bindTextTwoWay(liveData: viewModel.emailField.data)
 emailField.bindError(liveData: viewModel.emailField.error)
 ```
 
+### Flow 
+
+Create `FormField` to text input with empty validation:
+```kotlin
+val emailField: FormField<String, StringDesc> = FormField(
+    scope = viewModelScope,
+    initialValue = "",
+    validationTransform = { email ->
+        ValidationResult.of(email) {
+            notBlank(MR.strings.cant_be_blank.desc())
+            matchRegex(MR.strings.wrong_format.desc(), EMAIL_REGEX)
+        }
+    }
+)
+```
+FormField to work with `coroutines`, `CoroutineScope` is required.
+
+Call validate to perform validations and show error to user by `field.error` StateFlow.
+```kotlin
+class LoginViewModel : ViewModel() {
+    private val _actions: Channel<Action> = Channel(Channel.BUFFERED)
+    val actions: CFlow<Action> get() = _actions.receiveAsFlow().cFlow()
+
+    val emailField: FormField<String, StringDesc> = FormField(
+        scope = viewModelScope,
+        initialValue = "",
+        validation = flowBlock { email ->
+            ValidationResult.of(email) {
+                notBlank(MR.strings.cant_be_blank.desc())
+                matchRegex(MR.strings.wrong_format.desc(), EMAIL_REGEX)
+            }
+        }
+    )
+
+    @Suppress("MagicNumber")
+    val passwordField: FormField<String, StringDesc> = FormField(
+        scope = viewModelScope,
+        initialValue = "",
+        validation = fieldValidation {
+            notBlank(MR.strings.cant_be_blank.desc())
+            minLength(MR.strings.must_contain_more_char.desc(), 4)
+        }
+    )
+
+    private val fields = listOf(emailField, passwordField)
+
+    fun onLoginPressed() {
+        if (!fields.validate()) return
+
+        val email = emailField.value()
+        val password = passwordField.value()
+        val message = "$email:$password"
+
+        _actions.trySend(Action.ShowMessage(message.desc()))
+    }
+
+    sealed interface Action {
+        data class ShowMessage(val message: StringDesc) : Action
+    }
+
+    companion object {
+        @Suppress("MaxLineLength")
+        private val EMAIL_REGEX =
+            Regex("[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}\\@[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}(\\.[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25})+")
+    }
+}
+```
+
+Bind FormField to UI by data and error `StateFlow`s: 
+
+```kotlin
+val email: String by viewModel.emailField.data.collectAsState()
+
+TextField(
+    placeholder = @Composable { 
+        Text("Email") 
+    }, 
+    value = email, 
+    onValueChange = { viewModel.emailField.data.value = it }
+)
+```
+
+For ease of use in working with SwiftUI, you can use [this CocoaPods
+dependency](https://github.com/icerockdev/moko-mvvm#swiftui-additions).
+```swift
+struct LoginScreen: View {
+    @StateObject var viewModel: LoginViewModel = LoginViewModel()
+    
+    var body: some View {
+        LoginScreenBody(
+             email: viewModel.binding(\.emailField.data),
+             emailError: viewModel.state(\.emailField.error)
+        )
+    }
+}
+
+struct LoginScreenBody: View {
+    @Binding var email: String
+    let emailError: StringDesc?
+    
+    var body: some View {
+        VStack {
+            TextField("email", text: viewModel.binding(\.passwordField.data))
+            if let emailError = emailError {
+                Text(emailError.localized())
+            }
+        }
+    }
+}
+```
+
 #### Validations packet
 
 There is a useful `ValidationResult` class for building validation monads for a form fields.
@@ -174,11 +293,14 @@ val passwordField = FormField<String, StringDesc>(
 ```
 
 ## Samples
-More examples can be found in the [sample directory](sample).
+More examples can be found in the [sample directory](sample) or [sample-declarative-ui directory](sample-declarative-ui).
 
 ## Set Up Locally 
-- In [fields directory](fields) contains `fields` library;
-- In [sample directory](sample) contains samples on android, ios & mpp-library connected to apps.
+- In [fields-core directory](fields-core) contains the core - validations logic and the interface for interacting with fields;
+- In [fields-flow directory](fields-flow) contains implementation of the FormField interface using `kotlinx.coroutines`;
+- In [fields-livedata directory](fields-livedata) contains implementation of the FormField interface using `moko-mvvm` `LiveData`s
+- In [sample directory](sample) contains samples use `fields-livedata` on Android, iOS & mpp-library connected to apps
+- In [sample-declarative-ui directory](sample-declarative-ui) contains samples use `fields-flow` on Android with Compose,on iOS with SwiftUI and shared module connected to apps
 
 ## Contributing
 All development (both new features and bug fixes) is performed in `develop` branch. This way `master` sources always contain sources of the most recently released version. Please send PRs with bug fixes to `develop` branch. Fixes to documentation in markdown files are an exception to this rule. They are updated directly in `master`.

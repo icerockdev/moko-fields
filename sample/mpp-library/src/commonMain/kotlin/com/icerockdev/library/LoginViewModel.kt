@@ -6,19 +6,19 @@
 
 package com.icerockdev.library
 
-import dev.icerock.moko.fields.FormField
-import dev.icerock.moko.fields.liveBlock
-import dev.icerock.moko.fields.validate
+import dev.icerock.moko.fields.core.validate
+import dev.icerock.moko.fields.core.validations.ValidationResult
+import dev.icerock.moko.fields.core.validations.matchRegex
+import dev.icerock.moko.fields.core.validations.minLength
+import dev.icerock.moko.fields.core.validations.notBlank
+import dev.icerock.moko.fields.livedata.FormField
+import dev.icerock.moko.fields.livedata.liveBlock
+import dev.icerock.moko.fields.livedata.validations.fieldValidation
 import dev.icerock.moko.mvvm.dispatcher.EventsDispatcher
 import dev.icerock.moko.mvvm.dispatcher.EventsDispatcherOwner
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.desc.desc
-import dev.icerock.moko.validations.ValidationResult
-import dev.icerock.moko.validations.fieldValidation
-import dev.icerock.moko.validations.matchRegex
-import dev.icerock.moko.validations.minLength
-import dev.icerock.moko.validations.notBlank
 
 class LoginViewModel(
     override val eventsDispatcher: EventsDispatcher<EventsListener>
