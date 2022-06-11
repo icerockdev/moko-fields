@@ -20,7 +20,7 @@ dependencies {
     commonMainApi(libs.mokoMvvmCore)
     commonMainApi(libs.mokoMvvmLiveData)
     commonMainApi(libs.mokoMvvmLiveDataResources)
-    commonMainApi(projects.fields)
+    commonMainApi(projects.fieldsLivedata)
 }
 
 multiplatformResources {
@@ -28,7 +28,7 @@ multiplatformResources {
 }
 
 framework {
-    export(projects.fields)
+    export(projects.fieldsLivedata)
     export(libs.mokoResources)
     export(libs.mokoMvvmCore)
     export(libs.mokoMvvmLiveData)
