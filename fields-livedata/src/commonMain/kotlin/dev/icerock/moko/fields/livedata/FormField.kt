@@ -17,7 +17,7 @@ open class FormField<D, E>(
     validation: (LiveData<D>) -> LiveData<E?>
 ) : FormField<D, E> {
 
-    open val data = MutableLiveData(initialValue)
+    val data = MutableLiveData(initialValue)
 
     private val validationError: MutableLiveData<E?> by lazy {
         MediatorLiveData<E?>(null).apply {
@@ -43,12 +43,19 @@ open class FormField<D, E>(
         validationError.value = error
     }
 
-    override fun value(): D = data.value
+    override var value: D = data.value
 
     override fun validate(): Boolean {
         showValidationError.value = true
         return isValid.value
     }
+
+    @Deprecated(
+        message = "Deprecated. Please, use \"value\" field",
+        replaceWith = ReplaceWith("value", "dev.icerock.moko.fields.livedata.FirmField.value"),
+        level = DeprecationLevel.WARNING
+    )
+    fun value(): D = value
 }
 
 fun <D, E> liveBlock(block: (D) -> E?): ((LiveData<D>) -> LiveData<E?>) {

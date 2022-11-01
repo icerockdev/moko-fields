@@ -10,6 +10,9 @@ plugins {
 }
 
 dependencies {
+    androidMainApi(libs.androidXLifecycle)
+    androidMainApi(libs.lifecycleKtx)
+    commonMainApi(libs.coroutines)
     commonMainApi(libs.mokoResources)
 
     commonTestApi(libs.mokoTest)

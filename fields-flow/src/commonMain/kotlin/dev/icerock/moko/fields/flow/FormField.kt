@@ -53,12 +53,19 @@ open class FormField<D, E>(
         validationError.value = error
     }
 
-    override fun value(): D = data.value
+    override var value: D = data.value
 
     override fun validate(): Boolean {
         showValidationError.value = true
         return isValid.value
     }
+
+    @Deprecated(
+        message = "Deprecated. Please, use \"value\" field",
+        replaceWith = ReplaceWith("value", "dev.icerock.moko.fields.flow.FirmField.value"),
+        level = DeprecationLevel.WARNING
+    )
+    fun value(): D = value
 }
 
 fun <D, E> flowBlock(block: (D) -> E?): ((Flow<D>) -> Flow<E?>) {
