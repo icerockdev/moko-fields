@@ -11,6 +11,7 @@ import dev.icerock.moko.fields.core.validations.ValidationResult
 import dev.icerock.moko.fields.core.validations.matchRegex
 import dev.icerock.moko.fields.core.validations.minLength
 import dev.icerock.moko.fields.core.validations.notBlank
+import dev.icerock.moko.fields.livedata.BaseLiveDataFormField
 import dev.icerock.moko.fields.livedata.FormField
 import dev.icerock.moko.fields.livedata.liveBlock
 import dev.icerock.moko.fields.livedata.validations.fieldValidation
@@ -23,7 +24,7 @@ import dev.icerock.moko.resources.desc.desc
 class LoginViewModel(
     override val eventsDispatcher: EventsDispatcher<EventsListener>
 ) : ViewModel(), EventsDispatcherOwner<LoginViewModel.EventsListener> {
-    val emailField: FormField<String, StringDesc> = FormField(
+    val emailField: BaseLiveDataFormField<String, StringDesc> = FormField(
         initialValue = "",
         validation = liveBlock { email ->
             ValidationResult.of(email) {
@@ -34,7 +35,7 @@ class LoginViewModel(
     )
 
     @Suppress("MagicNumber")
-    val passwordField: FormField<String, StringDesc> = FormField(
+    val passwordField: BaseLiveDataFormField<String, StringDesc> = FormField(
         initialValue = "",
         validation = fieldValidation {
             notBlank(MR.strings.cant_be_blank.desc())
@@ -47,8 +48,8 @@ class LoginViewModel(
     fun onLoginPressed() {
         if (!fields.validate()) return
 
-        val email = emailField.value()
-        val password = passwordField.value()
+        val email: String = emailField.value
+        val password: String = passwordField.value
         val message = "$email:$password"
 
         eventsDispatcher.dispatchEvent { showMessage(message.desc()) }

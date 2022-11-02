@@ -24,5 +24,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.mokoMvvmDataBinding)
 
+    implementation(projects.fieldsMaterial)
+
     implementation(projects.sample.mppLibrary)
 }

@@ -8,13 +8,13 @@ import android.text.Editable
 import android.text.TextWatcher
 import androidx.lifecycle.LifecycleOwner
 import com.google.android.material.textfield.TextInputLayout
-import dev.icerock.moko.fields.core.FormFieldAndroid
+import dev.icerock.moko.fields.core.FormField
 import dev.icerock.moko.resources.desc.StringDesc
 import kotlinx.coroutines.DisposableHandle
 
 fun TextInputLayout.bindFormField(
     lifecycleOwner: LifecycleOwner,
-    formField: FormFieldAndroid<String, StringDesc>,
+    formField: FormField<String, StringDesc>,
 ): DisposableHandle {
     val watcher = object : TextWatcher {
         override fun afterTextChanged(s: Editable?) = Unit
@@ -43,7 +43,6 @@ fun TextInputLayout.bindFormField(
             error = errorMessage?.toString(context)
             isErrorEnabled = errorMessage != null
         }
-
 
     return DisposableHandle {
         this.editText?.removeTextChangedListener(watcher)

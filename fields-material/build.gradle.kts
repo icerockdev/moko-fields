@@ -3,16 +3,14 @@
  */
 
 plugins {
-    id("dev.icerock.moko.gradle.multiplatform.mobile")
+    id("dev.icerock.moko.gradle.android.library")
     id("dev.icerock.moko.gradle.detekt")
     id("dev.icerock.moko.gradle.publication")
-    id("dev.icerock.moko.gradle.stub.javadoc")
 }
 
 dependencies {
-    androidMainApi(projects.fieldsCore)
-    androidMainApi(libs.mokoMvvmFlow)
-    androidMainApi(libs.lifecycleKtx)
-    androidMainApi(libs.mokoResources)
-    androidMainApi(libs.material)
+    api(projects.fieldsCore)
+    api(libs.mokoResources)
+    api(libs.lifecycleKtx)
+    api(libs.material)
 }

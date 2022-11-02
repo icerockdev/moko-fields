@@ -7,18 +7,19 @@
 package dev.icerock.moko.fields.sample.declarativeui
 
 import dev.icerock.moko.fields.core.validate
+import dev.icerock.moko.fields.core.validations.ValidationResult
+import dev.icerock.moko.fields.core.validations.matchRegex
+import dev.icerock.moko.fields.core.validations.minLength
+import dev.icerock.moko.fields.core.validations.notBlank
+import dev.icerock.moko.fields.flow.BaseFlowFormField
+import dev.icerock.moko.fields.flow.FormField
+import dev.icerock.moko.fields.flow.flowBlock
+import dev.icerock.moko.fields.flow.validations.fieldValidation
 import dev.icerock.moko.mvvm.flow.CFlow
 import dev.icerock.moko.mvvm.flow.cFlow
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.desc.desc
-import dev.icerock.moko.fields.core.validations.ValidationResult
-import dev.icerock.moko.fields.core.validations.matchRegex
-import dev.icerock.moko.fields.core.validations.minLength
-import dev.icerock.moko.fields.core.validations.notBlank
-import dev.icerock.moko.fields.flow.FormField
-import dev.icerock.moko.fields.flow.flowBlock
-import dev.icerock.moko.fields.flow.validations.fieldValidation
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 
@@ -27,7 +28,7 @@ class LoginViewModel : ViewModel() {
     private val _actions: Channel<Action> = Channel(Channel.BUFFERED)
     val actions: CFlow<Action> get() = _actions.receiveAsFlow().cFlow()
 
-    val emailField: FormField<String, StringDesc> = FormField(
+    val emailField: BaseFlowFormField<String, StringDesc> = FormField(
         scope = viewModelScope,
         initialValue = "",
         validation = flowBlock { email ->
@@ -39,7 +40,7 @@ class LoginViewModel : ViewModel() {
     )
 
     @Suppress("MagicNumber")
-    val passwordField: FormField<String, StringDesc> = FormField(
+    val passwordField: BaseFlowFormField<String, StringDesc> = FormField(
         scope = viewModelScope,
         initialValue = "",
         validation = fieldValidation {
@@ -53,8 +54,8 @@ class LoginViewModel : ViewModel() {
     fun onLoginPressed() {
         if (!fields.validate()) return
 
-        val email = emailField.value()
-        val password = passwordField.value()
+        val email: String = emailField.value
+        val password: String = passwordField.value
         val message = "$email:$password"
 
         _actions.trySend(Action.ShowMessage(message.desc()))

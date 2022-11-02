@@ -4,27 +4,24 @@
 
 package dev.icerock.moko.fields.flow
 
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.lifecycleScope
-import dev.icerock.moko.fields.core.FormFieldAndroid
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.DisposableHandle
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 
-open class FormFieldAndroid<D, E>(
-    scope: CoroutineScope,
+actual class FormField<D, E> actual constructor(
+    private val scope: CoroutineScope,
     initialValue: D,
     validation: (Flow<D>) -> Flow<E?>
-) : FormField<D, E>(scope, initialValue, validation), FormFieldAndroid<D, E> {
+) : BaseFlowFormField<D, E>(scope, initialValue, validation) {
 
     override fun observeData(
-        lifecycleOwner: LifecycleOwner,
         onChange: (D) -> Unit
     ): DisposableHandle {
-        val job: Job = lifecycleOwner.lifecycleScope.launchWhenStarted {
+        val job: Job = scope.launch {
             data.onEach { onChange(it) }.collect()
         }
 
@@ -34,10 +31,9 @@ open class FormFieldAndroid<D, E>(
     }
 
     override fun observeError(
-        lifecycleOwner: LifecycleOwner,
         onChange: (E?) -> Unit
     ): DisposableHandle {
-        val job: Job = lifecycleOwner.lifecycleScope.launchWhenStarted {
+        val job: Job = scope.launch {
             error.onEach { onChange(it) }.collect()
         }
 
