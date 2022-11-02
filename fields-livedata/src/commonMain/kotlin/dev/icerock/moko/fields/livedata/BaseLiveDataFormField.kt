@@ -39,15 +39,17 @@ abstract class BaseLiveDataFormField<D, E>(
         validationError.map { it == null }
     }
 
-    override fun setData(value: D) {
+    override fun setValue(value: D) {
         data.value = value
+    }
+
+    override fun value(): D {
+        return data.value
     }
 
     override fun setError(error: E?) {
         validationError.value = error
     }
-
-    override var value: D = data.value
 
     override fun validate(): Boolean {
         showValidationError.value = true

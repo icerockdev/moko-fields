@@ -5,7 +5,7 @@
 plugins {
     id("dev.icerock.moko.gradle.android.library")
     id("dev.icerock.moko.gradle.detekt")
-    id("dev.icerock.moko.gradle.publication")
+    id("dev.icerock.moko.gradle.android.publication")
 }
 
 dependencies {

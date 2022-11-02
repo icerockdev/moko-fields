@@ -5,8 +5,8 @@
 package dev.icerock.moko.fields.core
 
 expect interface FormField<D, E> {
-    var value: D
+    fun value(): D
     fun validate(): Boolean
-    fun setData(value: D)
+    fun setValue(value: D)
     fun setError(error: E?)
 }

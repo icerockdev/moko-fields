@@ -16,24 +16,25 @@ fun TextInputLayout.bindFormField(
     lifecycleOwner: LifecycleOwner,
     formField: FormField<String, StringDesc>,
 ): DisposableHandle {
+    val dataObserver: DisposableHandle = formField.observeData(lifecycleOwner) { value: String ->
+        if (editText?.text.toString() == value) return@observeData
+        editText?.setText(value)
+    }
+
     val watcher = object : TextWatcher {
         override fun afterTextChanged(s: Editable?) = Unit
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             val str = s.toString()
-            if (str == formField.value) return
 
-            formField.setData(str)
+            if (str == formField.value()) return
+
+            formField.setValue(str)
         }
     }
 
     editText?.addTextChangedListener(watcher)
-
-    val dataObserver: DisposableHandle = formField.observeData(lifecycleOwner) { value: String ->
-        if (editText?.text.toString() == value) return@observeData
-        editText?.setText(value)
-    }
 
     editText?.setOnFocusChangeListener { _, hasFocus ->
         if (hasFocus) return@setOnFocusChangeListener
