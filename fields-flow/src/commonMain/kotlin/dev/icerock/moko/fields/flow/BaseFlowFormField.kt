@@ -49,6 +49,10 @@ abstract class BaseFlowFormField<D, E>(
             .launchIn(scope)
     }
 
+    override fun setData(value: D) {
+        data.value = value
+    }
+
     override fun setError(error: E?) {
         validationError.value = error
     }

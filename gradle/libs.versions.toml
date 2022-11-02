@@ -2,9 +2,9 @@
 kotlinVersion = "1.6.10"
 
 # android
-androidAppCompatVersion = "1.5.1"
+androidAppCompatVersion = "1.4.1"
 materialDesignVersion = "1.7.0"
-androidLifecycleVersion = "2.5.1"
+androidLifecycleVersion = "2.2.0"
 
 # kotlinx
 coroutinesVersion = "1.6.2"
@@ -13,7 +13,7 @@ coroutinesVersion = "1.6.2"
 mokoResourcesVersion = "0.18.0"
 mokoMvvmVersion = "0.14.0"
 mokoTestVersion = "0.6.1"
-mokoFieldsVersion = "0.11.0"
+mokoFieldsVersion = "0.11.2"
 
 [libraries]
 # android

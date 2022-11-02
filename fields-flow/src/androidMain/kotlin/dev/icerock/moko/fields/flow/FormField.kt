@@ -12,12 +12,13 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
+import dev.icerock.moko.fields.core.FormField as FormFieldCore
 
 actual class FormField<D, E> actual constructor(
     scope: CoroutineScope,
     initialValue: D,
     validation: (Flow<D>) -> Flow<E?>
-) : BaseFlowFormField<D, E>(scope, initialValue, validation) {
+) : BaseFlowFormField<D, E>(scope, initialValue, validation), FormFieldCore<D, E> {
 
     override fun observeData(
         lifecycleOwner: LifecycleOwner,

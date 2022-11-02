@@ -8,11 +8,12 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import dev.icerock.moko.mvvm.livedata.LiveData
 import kotlinx.coroutines.DisposableHandle
+import dev.icerock.moko.fields.core.FormField as FormFieldCore
 
 actual class FormField<D, E> actual constructor(
     initialValue: D,
     validation: (LiveData<D>) -> LiveData<E?>
-) : BaseLiveDataFormField<D, E>(initialValue, validation) {
+) : BaseLiveDataFormField<D, E>(initialValue, validation), FormFieldCore<D, E> {
     override fun observeData(
         lifecycleOwner: LifecycleOwner,
         onChange: (D) -> Unit

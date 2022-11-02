@@ -24,17 +24,18 @@ fun TextInputLayout.bindFormField(
             val str = s.toString()
             if (str == formField.value) return
 
-            formField.value = str
+            formField.setData(str)
         }
     }
 
-    this.editText?.addTextChangedListener(watcher)
+    editText?.addTextChangedListener(watcher)
 
     val dataObserver: DisposableHandle = formField.observeData(lifecycleOwner) { value: String ->
-        this.editText?.text = Editable.Factory.getInstance().newEditable(value)
+        if (editText?.text.toString() == value) return@observeData
+        editText?.setText(value)
     }
 
-    this.editText?.setOnFocusChangeListener { _, hasFocus ->
+    editText?.setOnFocusChangeListener { _, hasFocus ->
         if (hasFocus) return@setOnFocusChangeListener
         formField.validate()
     }
@@ -45,8 +46,8 @@ fun TextInputLayout.bindFormField(
         }
 
     return DisposableHandle {
-        this.editText?.removeTextChangedListener(watcher)
-        this.editText?.onFocusChangeListener = null
+        editText?.removeTextChangedListener(watcher)
+        editText?.onFocusChangeListener = null
         dataObserver.dispose()
         errorObserver.dispose()
     }

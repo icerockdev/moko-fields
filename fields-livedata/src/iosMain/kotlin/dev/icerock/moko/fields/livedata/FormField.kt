@@ -8,11 +8,12 @@ import dev.icerock.moko.mvvm.livedata.Closeable
 import dev.icerock.moko.mvvm.livedata.LiveData
 import dev.icerock.moko.mvvm.livedata.addCloseableObserver
 import kotlinx.coroutines.DisposableHandle
+import dev.icerock.moko.fields.core.FormField as FormFieldCore
 
 actual class FormField<D, E> actual constructor(
     initialValue: D,
     validation: (LiveData<D>) -> LiveData<E?>
-) : BaseLiveDataFormField<D, E>(initialValue, validation) {
+) : BaseLiveDataFormField<D, E>(initialValue, validation), FormFieldCore<D, E> {
     override fun observeData(
         onChange: (D) -> Unit
     ): DisposableHandle {

@@ -10,6 +10,7 @@ import kotlinx.coroutines.DisposableHandle
 actual interface FormField<D, E> {
     actual var value: D
     actual fun validate(): Boolean
+    actual fun setData(value: D)
     actual fun setError(error: E?)
 
     fun observeData(lifecycleOwner: LifecycleOwner, onChange: (D) -> Unit): DisposableHandle
