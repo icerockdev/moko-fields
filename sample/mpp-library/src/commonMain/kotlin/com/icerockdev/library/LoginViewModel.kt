@@ -48,8 +48,8 @@ class LoginViewModel(
     fun onLoginPressed() {
         if (!fields.validate()) return
 
-        val email: String = emailField.value
-        val password: String = passwordField.value
+        val email: String = emailField.value()
+        val password: String = passwordField.value()
         val message = "$email:$password"
 
         eventsDispatcher.dispatchEvent { showMessage(message.desc()) }

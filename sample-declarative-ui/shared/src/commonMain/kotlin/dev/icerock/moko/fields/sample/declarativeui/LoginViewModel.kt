@@ -54,8 +54,8 @@ class LoginViewModel : ViewModel() {
     fun onLoginPressed() {
         if (!fields.validate()) return
 
-        val email: String = emailField.value
-        val password: String = passwordField.value
+        val email: String = emailField.value()
+        val password: String = passwordField.value()
         val message = "$email:$password"
 
         _actions.trySend(Action.ShowMessage(message.desc()))
