@@ -4,7 +4,7 @@ kotlinVersion = "1.6.10"
 # android
 androidAppCompatVersion = "1.4.1"
 materialDesignVersion = "1.7.0"
-androidLifecycleVersion = "2.2.0"
+androidLifecycleVersion = "2.5.1"
 
 # kotlinx
 coroutinesVersion = "1.6.2"
