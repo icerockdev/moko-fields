@@ -14,6 +14,4 @@ actual interface FormField<D, E> {
     actual fun setError(error: E?)
     fun observeData(lifecycleOwner: LifecycleOwner, onChange: (D) -> Unit): DisposableHandle
     fun observeError(lifecycleOwner: LifecycleOwner, onChange: (E?) -> Unit): DisposableHandle
-
-
 }
