@@ -20,6 +20,7 @@ mokoFieldsVersion = "0.11.0"
 appCompat = { module = "androidx.appcompat:appcompat", version.ref = "androidAppCompatVersion" }
 material = { module = "com.google.android.material:material", version.ref = "materialDesignVersion" }
 lifecycleKtx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androidLifecycleVersion" }
+lifecycleViewModelKtx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidLifecycleVersion" }
 androidXLifecycle = { module = "androidx.lifecycle:lifecycle-common", version.ref = "androidLifecycleVersion"}
 
 

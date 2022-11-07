@@ -20,14 +20,9 @@ android {
 }
 
 dependencies {
-    configurations {
-        all {
-            exclude("androidx.lifecycle","lifecycle-viewmodel-ktx")
-        }
-    }
-
     implementation(libs.appCompat)
     implementation(libs.material)
+    implementation(libs.lifecycleViewModelKtx)
     implementation(libs.mokoMvvmDataBinding)
 
     implementation(projects.fieldsMaterial)
