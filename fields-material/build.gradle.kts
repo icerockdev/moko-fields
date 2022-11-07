@@ -11,6 +11,5 @@ plugins {
 dependencies {
     api(projects.fieldsCore)
     api(libs.mokoResources)
-    api(libs.lifecycleKtx)
     api(libs.material)
 }
