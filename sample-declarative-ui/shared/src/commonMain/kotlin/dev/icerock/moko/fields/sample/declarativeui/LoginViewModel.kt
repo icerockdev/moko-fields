@@ -11,7 +11,6 @@ import dev.icerock.moko.fields.core.validations.ValidationResult
 import dev.icerock.moko.fields.core.validations.matchRegex
 import dev.icerock.moko.fields.core.validations.minLength
 import dev.icerock.moko.fields.core.validations.notBlank
-import dev.icerock.moko.fields.flow.BaseFlowFormField
 import dev.icerock.moko.fields.flow.FormField
 import dev.icerock.moko.fields.flow.flowBlock
 import dev.icerock.moko.fields.flow.validations.fieldValidation
@@ -28,7 +27,7 @@ class LoginViewModel : ViewModel() {
     private val _actions: Channel<Action> = Channel(Channel.BUFFERED)
     val actions: CFlow<Action> get() = _actions.receiveAsFlow().cFlow()
 
-    val emailField: BaseFlowFormField<String, StringDesc> = FormField(
+    val emailField: FormField<String, StringDesc> = FormField(
         scope = viewModelScope,
         initialValue = "",
         validation = flowBlock { email ->
@@ -40,7 +39,7 @@ class LoginViewModel : ViewModel() {
     )
 
     @Suppress("MagicNumber")
-    val passwordField: BaseFlowFormField<String, StringDesc> = FormField(
+    val passwordField: FormField<String, StringDesc> = FormField(
         scope = viewModelScope,
         initialValue = "",
         validation = fieldValidation {
