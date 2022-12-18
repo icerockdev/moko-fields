@@ -6,6 +6,7 @@ plugins {
     id("dev.icerock.moko.gradle.android.library")
     id("dev.icerock.moko.gradle.detekt")
     id("dev.icerock.moko.gradle.android.publication")
+    id("dev.icerock.moko.gradle.stub.javadoc")
 }
 
 dependencies {
