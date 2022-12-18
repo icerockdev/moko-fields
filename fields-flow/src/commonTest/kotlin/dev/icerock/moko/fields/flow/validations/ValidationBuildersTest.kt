@@ -52,7 +52,7 @@ class ValidationBuildersTest {
     }
 
     private fun testValidationWithForm(validation: (Flow<String>) -> Flow<StringDesc?>) {
-        val field = FormField<String, StringDesc>(
+        val field: FormField<String, StringDesc> = FormField(
             scope = coroutineScope, initialValue = "", validation = validation
         )
 

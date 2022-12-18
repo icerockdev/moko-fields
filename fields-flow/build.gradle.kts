@@ -10,6 +10,7 @@ plugins {
 }
 
 dependencies {
+    androidMainApi(libs.androidXLifecycle)
     commonMainApi(projects.fieldsCore)
     commonMainApi(libs.mokoMvvmFlow)
 

@@ -22,7 +22,9 @@ android {
 dependencies {
     implementation(libs.appCompat)
     implementation(libs.material)
+    implementation(libs.lifecycleViewModelKtx)
     implementation(libs.mokoMvvmDataBinding)
 
+    implementation(projects.fieldsMaterial)
     implementation(projects.sample.mppLibrary)
 }

@@ -50,7 +50,10 @@ class ValidationBuildersTest {
     }
 
     private fun testValidationWithForm(validation: (LiveData<String>) -> LiveData<StringDesc?>) {
-        val field = FormField<String, StringDesc>("", validation)
+        val field: FormField<String, StringDesc> = FormField(
+            initialValue = "",
+            validation = validation
+        )
 
         field.data.value = ""
         field.validate()
