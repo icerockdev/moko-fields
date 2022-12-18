@@ -2,24 +2,27 @@
 kotlinVersion = "1.6.10"
 
 # android
-androidAppCompatVersion = "1.2.0"
-materialDesignVersion = "1.0.0"
-androidLifecycleVersion = "2.1.0"
+androidAppCompatVersion = "1.4.1"
+materialDesignVersion = "1.7.0"
+androidLifecycleVersion = "2.5.1"
 
 # kotlinx
-coroutinesVersion = "1.6.0-native-mt"
+coroutinesVersion = "1.6.2"
 
 # moko
 mokoResourcesVersion = "0.18.0"
-mokoMvvmVersion = "0.13.0"
+mokoMvvmVersion = "0.14.0"
 mokoTestVersion = "0.6.1"
-mokoFieldsVersion = "0.10.0"
+mokoFieldsVersion = "0.11.0"
 
 [libraries]
 # android
 appCompat = { module = "androidx.appcompat:appcompat", version.ref = "androidAppCompatVersion" }
 material = { module = "com.google.android.material:material", version.ref = "materialDesignVersion" }
-lifecycle = { module = "androidx.lifecycle:lifecycle-extensions", version.ref = "androidLifecycleVersion" }
+lifecycleKtx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androidLifecycleVersion" }
+lifecycleViewModelKtx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidLifecycleVersion" }
+androidXLifecycle = { module = "androidx.lifecycle:lifecycle-common", version.ref = "androidLifecycleVersion"}
+
 
 # kotlinx
 coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutinesVersion" }
@@ -32,12 +35,13 @@ mokoMvvmCore = { module = "dev.icerock.moko:mvvm-core", version.ref = "mokoMvvmV
 mokoMvvmLiveData = { module = "dev.icerock.moko:mvvm-livedata", version.ref = "mokoMvvmVersion" }
 mokoMvvmFlow = { module = "dev.icerock.moko:mvvm-flow", version.ref = "mokoMvvmVersion" }
 mokoMvvmFlowCompose = { module = "dev.icerock.moko:mvvm-flow-compose", version.ref = "mokoMvvmVersion" }
+mokoMvvmFlowResources = { module = "dev.icerock.moko:mvvm-flow-resources", version.ref = "mokoMvvmVersion" }
 mokoMvvmLiveDataResources = { module = "dev.icerock.moko:mvvm-livedata-resources", version.ref = "mokoMvvmVersion" }
 mokoTest = { module = "dev.icerock.moko:test-core", version.ref = "mokoTestVersion" }
 
 # gradle plugins
 kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlinVersion" }
-androidGradlePlugin = { module = "com.android.tools.build:gradle", version = "7.0.4" }
+androidGradlePlugin = { module = "com.android.tools.build:gradle", version = "7.2.2" }
 mokoResourcesGradlePlugin = { module = "dev.icerock.moko:resources-generator", version.ref = "mokoResourcesVersion" }
-mokoGradlePlugin = { module = "dev.icerock.moko:moko-gradle-plugin", version = "0.1.0" }
-mokoKSwiftGradlePlugin = { module = "dev.icerock.moko:kswift-gradle-plugin", version = "0.4.0" }
+mokoGradlePlugin = { module = "dev.icerock.moko:moko-gradle-plugin", version = "0.2.0" }
+mokoKSwiftGradlePlugin = { module = "dev.icerock.moko:kswift-gradle-plugin", version = "0.6.0" }
