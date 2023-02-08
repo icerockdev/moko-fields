@@ -13,7 +13,7 @@ import dev.icerock.moko.mvvm.livedata.map
 import dev.icerock.moko.mvvm.livedata.mediatorOf
 
 abstract class BaseLiveDataFormField<D, E>(
-    initialValue: D,
+    private val initialValue: D,
     validation: (LiveData<D>) -> LiveData<E?>
 ) : FormField<D, E> {
 
@@ -54,6 +54,11 @@ abstract class BaseLiveDataFormField<D, E>(
     override fun validate(): Boolean {
         showValidationError.value = true
         return isValid.value
+    }
+
+    override fun clear() {
+        setValue(initialValue)
+        showValidationError.value = false
     }
 }
 

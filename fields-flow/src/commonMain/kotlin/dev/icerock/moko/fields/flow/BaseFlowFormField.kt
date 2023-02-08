@@ -21,7 +21,7 @@ import kotlinx.coroutines.flow.stateIn
 
 abstract class BaseFlowFormField<D, E>(
     scope: CoroutineScope,
-    initialValue: D,
+    private val initialValue: D,
     validation: (Flow<D>) -> Flow<E?>
 ) : FormField<D, E> {
 
@@ -64,6 +64,11 @@ abstract class BaseFlowFormField<D, E>(
     override fun validate(): Boolean {
         showValidationError.value = true
         return isValid.value
+    }
+
+    override fun clear() {
+        setValue(initialValue)
+        showValidationError.value = false
     }
 }
 

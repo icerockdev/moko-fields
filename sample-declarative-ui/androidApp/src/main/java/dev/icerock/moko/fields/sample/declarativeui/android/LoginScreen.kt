@@ -128,7 +128,6 @@ fun LoginScreenBody(
                 Text(text = "Login")
             }
         }
-
     }
 }
 

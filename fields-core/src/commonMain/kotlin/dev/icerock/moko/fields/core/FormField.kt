@@ -9,4 +9,5 @@ expect interface FormField<D, E> {
     fun validate(): Boolean
     fun setValue(value: D)
     fun setError(error: E?)
+    fun clear()
 }
