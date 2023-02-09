@@ -60,6 +60,10 @@ abstract class BaseLiveDataFormField<D, E>(
         setValue(initialValue)
         showValidationError.value = false
     }
+
+    override fun resetValidation() {
+        showValidationError.value = false
+    }
 }
 
 fun <D, E> liveBlock(block: (D) -> E?): ((LiveData<D>) -> LiveData<E?>) {

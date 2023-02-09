@@ -10,4 +10,5 @@ expect interface FormField<D, E> {
     fun setValue(value: D)
     fun setError(error: E?)
     fun clear()
+    fun resetValidation()
 }

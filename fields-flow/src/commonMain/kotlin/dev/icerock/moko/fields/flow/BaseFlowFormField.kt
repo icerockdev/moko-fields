@@ -70,6 +70,10 @@ abstract class BaseFlowFormField<D, E>(
         setValue(initialValue)
         showValidationError.value = false
     }
+
+    override fun resetValidation() {
+        showValidationError.value = false
+    }
 }
 
 fun <D, E> flowBlock(block: (D) -> E?): ((Flow<D>) -> Flow<E?>) {
