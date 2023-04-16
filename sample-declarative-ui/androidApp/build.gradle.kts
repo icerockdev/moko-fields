@@ -7,17 +7,15 @@ plugins {
     kotlin("android")
 }
 
-val composeVersion = "1.1.1"
-
 android {
-    compileSdk = 32
+    compileSdk = 33
     buildFeatures {
         compose = true
     }
     defaultConfig {
         applicationId = "dev.icerock.moko.fields.sample.declarativeui.android"
         minSdk = 21
-        targetSdk = 32
+        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
     }
@@ -27,26 +25,29 @@ android {
         }
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = composeVersion
+        kotlinCompilerExtensionVersion = "1.4.4"
     }
 }
 
 dependencies {
     implementation(project(":sample-declarative-ui:shared"))
 
-    implementation("androidx.compose.ui:ui:$composeVersion")
-    // Tooling support (Previews, etc.)
-    implementation("androidx.compose.ui:ui-tooling:$composeVersion")
-    // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
-    implementation("androidx.compose.foundation:foundation:$composeVersion")
-    // Material Design
-    implementation("androidx.compose.material:material:$composeVersion")
-    // Material design icons
-    implementation("androidx.compose.material:material-icons-core:$composeVersion")
-    // Integration with observables
-    implementation("androidx.compose.runtime:runtime-livedata:$composeVersion")
+    implementation(platform("androidx.compose:compose-bom:2023.03.00"))
 
-    implementation("androidx.activity:activity-compose:1.4.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1")
-    implementation("androidx.navigation:navigation-compose:2.4.2")
+    implementation("androidx.compose.ui:ui")
+    // Tooling support (Previews, etc.)
+    implementation("androidx.compose.ui:ui-tooling")
+    // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
+    implementation("androidx.compose.foundation:foundation")
+    // Material Design
+    implementation("androidx.compose.material:material")
+    // Material design icons
+    implementation("androidx.compose.material:material-icons-core")
+    // Integration with observables
+    implementation("androidx.compose.runtime:runtime-livedata")
+
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("androidx.activity:activity-compose:1.7.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
+    implementation("androidx.navigation:navigation-compose:2.5.3")
 }

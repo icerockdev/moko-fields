@@ -53,7 +53,6 @@ kotlin {
                 api(libs.mokoResourcesCompose)
             }
         }
-        val androidTest by getting
         val iosX64Main by getting
         val iosArm64Main by getting
         val iosSimulatorArm64Main by getting
@@ -109,22 +108,22 @@ afterEvaluate {
 
     tasks.filterIsInstance<org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFrameworkTask>()
         .forEach { xcFrameworkTask ->
-            val frameworkDir: File = xcFrameworkTask.frameworks.first().outputFile
-            val swiftGenDir = File(frameworkDir.parent, frameworkDir.nameWithoutExtension + "Swift")
-            val xcframeworkDir =
-                File(xcFrameworkTask.outputDir, xcFrameworkTask.buildType.getName())
-            val targetDir = File(xcframeworkDir, swiftGenDir.name)
-
             @Suppress("ObjectLiteralToLambda")
             xcFrameworkTask.doLast(object : Action<Task> {
                 override fun execute(t: Task) {
+                    val frameworkDir: File = xcFrameworkTask.inputFrameworkFiles.first()
+                    val swiftGenDir = File(
+                        frameworkDir.parent,
+                        frameworkDir.nameWithoutExtension + "Swift"
+                    )
+                    val xcframeworkDir = File(
+                        xcFrameworkTask.outputDir,
+                        xcFrameworkTask.buildType.getName()
+                    )
+                    val targetDir = File(xcframeworkDir, swiftGenDir.name)
+
                     targetDir.mkdirs()
                     swiftGenDir.copyRecursively(targetDir, overwrite = true)
-                }
-            }).doLast(object : Action<Task> {
-                override fun execute(t: Task) {
-                    val to = File(rootDir, "sample-declarative-ui/iosApp/iosApp/fromMpp")
-                    swiftGenDir.copyRecursively(to, overwrite = true)
                 }
             })
         }
@@ -133,5 +132,9 @@ afterEvaluate {
 
 kswift {
     install(dev.icerock.moko.kswift.plugin.feature.SealedToSwiftEnumFeature)
-    install(dev.icerock.moko.kswift.plugin.feature.PlatformExtensionFunctionsFeature)
+    install(dev.icerock.moko.kswift.plugin.feature.PlatformExtensionFunctionsFeature) {
+        filter = excludeFilter(
+            "PackageFunctionContext/dev.icerock.moko:resources/dev.icerock.moko.resources.desc.color/Class(name=dev/icerock/moko/graphics/Color)/asColorDesc/"
+        )
+    }
 }

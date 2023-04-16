@@ -10,11 +10,11 @@
 		058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557BA273AAA24004C7B11 /* Assets.xcassets */; };
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
+		221B0D7C29EBD39700183CAF /* dev_icerock_moko_shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221B0D7729EBD39700183CAF /* dev_icerock_moko_shared.swift */; };
+		221B0D7D29EBD39700183CAF /* dev_icerock_moko_mvvm-flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221B0D7829EBD39700183CAF /* dev_icerock_moko_mvvm-flow.swift */; };
+		221B0D7E29EBD39700183CAF /* dev_icerock_moko_resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221B0D7929EBD39700183CAF /* dev_icerock_moko_resources.swift */; };
 		22BDE752281BEE8000259368 /* MultiPlatformLibrary.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22BDE746281BEDBA00259368 /* MultiPlatformLibrary.xcframework */; };
 		22BDE753281BEE8000259368 /* MultiPlatformLibrary.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 22BDE746281BEDBA00259368 /* MultiPlatformLibrary.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		45061679284861C9005F99DF /* dev_icerock_moko_shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45061676284861C9005F99DF /* dev_icerock_moko_shared.swift */; };
-		4506167A284861C9005F99DF /* dev_icerock_moko_mvvm-flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45061677284861C9005F99DF /* dev_icerock_moko_mvvm-flow.swift */; };
-		4506167B284861C9005F99DF /* dev_icerock_moko_resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45061678284861C9005F99DF /* dev_icerock_moko_resources.swift */; };
 		4506167D284862DE005F99DF /* LoginBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4506167C284862DE005F99DF /* LoginBinding.swift */; };
 		4506167F28486E3D005F99DF /* LoginScreenBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4506167E28486E3D005F99DF /* LoginScreenBody.swift */; };
 		4506168128486EB5005F99DF /* mokoStringDescExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4506168028486EB5005F99DF /* mokoStringDescExt.swift */; };
@@ -40,11 +40,11 @@
 		058557BA273AAA24004C7B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
+		221B0D7729EBD39700183CAF /* dev_icerock_moko_shared.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dev_icerock_moko_shared.swift; sourceTree = "<group>"; };
+		221B0D7829EBD39700183CAF /* dev_icerock_moko_mvvm-flow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "dev_icerock_moko_mvvm-flow.swift"; sourceTree = "<group>"; };
+		221B0D7929EBD39700183CAF /* dev_icerock_moko_resources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dev_icerock_moko_resources.swift; sourceTree = "<group>"; };
 		22BDE746281BEDBA00259368 /* MultiPlatformLibrary.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MultiPlatformLibrary.xcframework; path = ../shared/build/xcode/MultiPlatformLibrary.xcframework; sourceTree = "<group>"; };
 		44E36C38F63DF79F7CEEAE3E /* Pods_iosApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		45061676284861C9005F99DF /* dev_icerock_moko_shared.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dev_icerock_moko_shared.swift; sourceTree = "<group>"; };
-		45061677284861C9005F99DF /* dev_icerock_moko_mvvm-flow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "dev_icerock_moko_mvvm-flow.swift"; sourceTree = "<group>"; };
-		45061678284861C9005F99DF /* dev_icerock_moko_resources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dev_icerock_moko_resources.swift; sourceTree = "<group>"; };
 		4506167C284862DE005F99DF /* LoginBinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBinding.swift; sourceTree = "<group>"; };
 		4506167E28486E3D005F99DF /* LoginScreenBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenBody.swift; sourceTree = "<group>"; };
 		4506168028486EB5005F99DF /* mokoStringDescExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mokoStringDescExt.swift; sourceTree = "<group>"; };
@@ -85,20 +85,22 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		45061675284861C9005F99DF /* fromMpp */ = {
+		221B0D7629EBD39700183CAF /* MultiPlatformLibrarySwift */ = {
 			isa = PBXGroup;
 			children = (
-				45061676284861C9005F99DF /* dev_icerock_moko_shared.swift */,
-				45061677284861C9005F99DF /* dev_icerock_moko_mvvm-flow.swift */,
-				45061678284861C9005F99DF /* dev_icerock_moko_resources.swift */,
+				221B0D7729EBD39700183CAF /* dev_icerock_moko_shared.swift */,
+				221B0D7829EBD39700183CAF /* dev_icerock_moko_mvvm-flow.swift */,
+				221B0D7929EBD39700183CAF /* dev_icerock_moko_resources.swift */,
 			);
-			path = fromMpp;
+			name = MultiPlatformLibrarySwift;
+			path = ../shared/build/xcode/MultiPlatformLibrarySwift;
 			sourceTree = "<group>";
 		};
 		7555FF72242A565900829871 = {
 			isa = PBXGroup;
 			children = (
 				22BDE746281BEDBA00259368 /* MultiPlatformLibrary.xcframework */,
+				221B0D7629EBD39700183CAF /* MultiPlatformLibrarySwift */,
 				7555FF7D242A565900829871 /* iosApp */,
 				7555FF7C242A565900829871 /* Products */,
 				7555FFB0242A642200829871 /* Frameworks */,
@@ -118,7 +120,6 @@
 			isa = PBXGroup;
 			children = (
 				4506168028486EB5005F99DF /* mokoStringDescExt.swift */,
-				45061675284861C9005F99DF /* fromMpp */,
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
 				7555FF82242A565900829871 /* ContentView.swift */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
@@ -273,14 +274,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4506167A284861C9005F99DF /* dev_icerock_moko_mvvm-flow.swift in Sources */,
+				221B0D7E29EBD39700183CAF /* dev_icerock_moko_resources.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				4506167F28486E3D005F99DF /* LoginScreenBody.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 				4506167D284862DE005F99DF /* LoginBinding.swift in Sources */,
-				45061679284861C9005F99DF /* dev_icerock_moko_shared.swift in Sources */,
-				4506167B284861C9005F99DF /* dev_icerock_moko_resources.swift in Sources */,
+				221B0D7D29EBD39700183CAF /* dev_icerock_moko_mvvm-flow.swift in Sources */,
 				4506168128486EB5005F99DF /* mokoStringDescExt.swift in Sources */,
+				221B0D7C29EBD39700183CAF /* dev_icerock_moko_shared.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

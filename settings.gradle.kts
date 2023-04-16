@@ -11,6 +11,8 @@ dependencyResolutionManagement {
     }
 }
 
+rootProject.name = "moko-fields"
+
 include(":fields-core")
 include(":fields-flow")
 include(":fields-livedata")

@@ -1,19 +1,19 @@
 [versions]
-kotlinVersion = "1.6.10"
+kotlinVersion = "1.8.10"
 
 # android
-androidAppCompatVersion = "1.4.1"
-materialDesignVersion = "1.7.0"
-androidLifecycleVersion = "2.5.1"
+androidAppCompatVersion = "1.6.1"
+materialDesignVersion = "1.8.0"
+androidLifecycleVersion = "2.6.1"
 
 # kotlinx
-coroutinesVersion = "1.6.2"
+coroutinesVersion = "1.6.4"
 
 # moko
-mokoResourcesVersion = "0.18.0"
-mokoMvvmVersion = "0.14.0"
+mokoResourcesVersion = "0.21.2"
+mokoMvvmVersion = "0.16.0"
 mokoTestVersion = "0.6.1"
-mokoFieldsVersion = "0.11.0"
+mokoFieldsVersion = "0.12.0"
 
 [libraries]
 # android
@@ -41,7 +41,7 @@ mokoTest = { module = "dev.icerock.moko:test-core", version.ref = "mokoTestVersi
 
 # gradle plugins
 kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlinVersion" }
-androidGradlePlugin = { module = "com.android.tools.build:gradle", version = "7.2.2" }
+androidGradlePlugin = { module = "com.android.tools.build:gradle", version = "7.4.2" }
 mokoResourcesGradlePlugin = { module = "dev.icerock.moko:resources-generator", version.ref = "mokoResourcesVersion" }
-mokoGradlePlugin = { module = "dev.icerock.moko:moko-gradle-plugin", version = "0.2.0" }
-mokoKSwiftGradlePlugin = { module = "dev.icerock.moko:kswift-gradle-plugin", version = "0.6.0" }
+mokoGradlePlugin = { module = "dev.icerock.moko:moko-gradle-plugin", version = "0.3.0" }
+mokoKSwiftGradlePlugin = { module = "dev.icerock.moko:kswift-gradle-plugin", version = "0.6.1" }

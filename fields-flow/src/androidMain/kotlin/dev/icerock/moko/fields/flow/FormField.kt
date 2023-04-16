@@ -4,14 +4,17 @@
 
 package dev.icerock.moko.fields.flow
 
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.DisposableHandle
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 import dev.icerock.moko.fields.core.FormField as FormFieldCore
 
 actual class FormField<D, E> actual constructor(
@@ -24,8 +27,10 @@ actual class FormField<D, E> actual constructor(
         lifecycleOwner: LifecycleOwner,
         onChange: (D) -> Unit
     ): DisposableHandle {
-        val job: Job = lifecycleOwner.lifecycleScope.launchWhenStarted {
-            data.onEach { onChange(it) }.collect()
+        val job: Job = lifecycleOwner.lifecycleScope.launch {
+            lifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                data.onEach { onChange(it) }.collect()
+            }
         }
 
         return DisposableHandle {
@@ -37,8 +42,10 @@ actual class FormField<D, E> actual constructor(
         lifecycleOwner: LifecycleOwner,
         onChange: (E?) -> Unit
     ): DisposableHandle {
-        val job: Job = lifecycleOwner.lifecycleScope.launchWhenStarted {
-            error.onEach { onChange(it) }.collect()
+        val job: Job = lifecycleOwner.lifecycleScope.launch {
+            lifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                error.onEach { onChange(it) }.collect()
+            }
         }
 
         return DisposableHandle {
