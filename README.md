@@ -37,10 +37,13 @@ allprojects {
 project build.gradle
 ```groovy
 dependencies {
-    commonMainApi("dev.icerock.moko:fields-core:0.11.0")
-    commonMainApi("dev.icerock.moko:fields-livedata:0.11.0")
-    commonMainApi("dev.icerock.moko:fields-flow:0.11.0")
-    androidMainApi("dev.icerock.moko:fields-material:0.11.0")
+    commonMainApi("dev.icerock.moko:fields-core:0.12.0")
+
+    // integration with reactive flows
+    commonMainApi("dev.icerock.moko:fields-livedata:0.12.0")
+    commonMainApi("dev.icerock.moko:fields-flow:0.12.0")
+ 
+    androidMainApi("dev.icerock.moko:fields-material:0.12.0")
 }
 ```
 
