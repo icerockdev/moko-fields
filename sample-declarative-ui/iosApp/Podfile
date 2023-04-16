@@ -5,5 +5,5 @@ target 'iosApp' do
   use_frameworks!
 
   # Pods for iosApp
-  pod 'mokoMvvmFlowSwiftUI', :podspec => 'https://raw.githubusercontent.com/icerockdev/moko-mvvm/release/0.13.0/mokoMvvmFlowSwiftUI.podspec'
+  pod 'mokoMvvmFlowSwiftUI', :podspec => 'https://raw.githubusercontent.com/icerockdev/moko-mvvm/release/0.16.0/mokoMvvmFlowSwiftUI.podspec'
 end

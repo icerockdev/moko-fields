@@ -11,6 +11,8 @@ plugins {
 android {
     buildFeatures.dataBinding = true
 
+    namespace = "com.icerockdev.app"
+
     defaultConfig {
         applicationId = "dev.icerock.moko.samples.fields"
 

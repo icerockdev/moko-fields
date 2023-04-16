@@ -14,6 +14,10 @@ plugins {
     id("dev.icerock.moko.kswift")
 }
 
+android {
+    namespace = "com.icerockdev.library"
+}
+
 dependencies {
     commonMainApi(libs.coroutines)
     commonMainApi(libs.mokoResources)

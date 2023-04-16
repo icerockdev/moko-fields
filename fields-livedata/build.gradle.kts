@@ -9,6 +9,10 @@ plugins {
     id("dev.icerock.moko.gradle.stub.javadoc")
 }
 
+android {
+    namespace = "dev.icerock.moko.fields.livedata"
+}
+
 dependencies {
     androidMainApi(libs.androidXLifecycle)
     commonMainApi(projects.fieldsCore)
