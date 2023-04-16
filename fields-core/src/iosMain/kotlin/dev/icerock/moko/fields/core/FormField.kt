@@ -11,7 +11,6 @@ actual interface FormField<D, E> {
     actual fun value(): D
     actual fun setValue(value: D)
     actual fun setError(error: E?)
-    actual fun clear()
     actual fun resetValidation()
     fun observeData(onChange: (D) -> Unit): DisposableHandle
     fun observeError(onChange: (E?) -> Unit): DisposableHandle
