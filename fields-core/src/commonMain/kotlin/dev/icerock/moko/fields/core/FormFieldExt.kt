@@ -4,5 +4,6 @@
 
 package dev.icerock.moko.fields.core
 
-fun List<FormField<*, *>>.validate(): Boolean =
-    all { it.validate() }
+fun List<FormField<*, *>>.validate(): Boolean {
+    return map { it.validate() }.all { true }
+}
