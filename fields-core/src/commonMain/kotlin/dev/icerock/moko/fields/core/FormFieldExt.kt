@@ -5,5 +5,5 @@
 package dev.icerock.moko.fields.core
 
 fun List<FormField<*, *>>.validate(): Boolean {
-    return map { it.validate() }.all { true }
+    return map { it.validate() }.all { it }
 }
