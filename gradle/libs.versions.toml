@@ -13,7 +13,7 @@ coroutinesVersion = "1.6.4"
 mokoResourcesVersion = "0.21.2"
 mokoMvvmVersion = "0.16.0"
 mokoTestVersion = "0.6.1"
-mokoFieldsVersion = "0.13.0"
+mokoFieldsVersion = "0.12.0"
 
 [libraries]
 # android
