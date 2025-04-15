@@ -18,7 +18,7 @@ val dependenciesList = listOf(
 )
 
 kotlin {
-    android()
+    androidTarget()
 
     val xcf = XCFramework("MultiPlatformLibrary")
     listOf(
@@ -75,15 +75,22 @@ kotlin {
 }
 
 multiplatformResources {
-    multiplatformResourcesPackage = "dev.icerock.moko.fields.sample.declarativeui"
+    resourcesPackage.set("dev.icerock.moko.fields.sample.declarativeui.shared")
 }
 
 android {
-    compileSdk = 32
+    compileSdk = 34
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
         minSdk = 21
-        targetSdk = 32
+        targetSdk = 34
+    }
+
+    namespace = "dev.icerock.sample.declarativeui.shared"
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 }
 
