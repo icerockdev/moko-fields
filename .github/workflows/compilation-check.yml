@@ -16,10 +16,10 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
-      - name: Set Xcode version to 15.3
+      - name: Set Xcode version to 15.2
         uses: maxim-lobanov/setup-xcode@v1
         with:
-          xcode-version: '15.3'
+          xcode-version: '15.2'
       - name: Print Xcode version
         run: xcodebuild -version
       - name: Check build
