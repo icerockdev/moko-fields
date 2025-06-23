@@ -29,7 +29,7 @@ dependencies {
     commonMainApi(libs.mokoMvvmLiveDataResources)
     commonMainApi(projects.fieldsLivedata)
 
-    iosMainImplementation("dev.icerock.moko:parcelize:0.9.0")
+    iosMainImplementation(libs.parcelize)
 }
 
 multiplatformResources {
