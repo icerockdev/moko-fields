@@ -1,3 +1,6 @@
+import io.gitlab.arturbosch.detekt.Detekt
+import java.util.Locale
+
 /*
  * Copyright 2019 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
  */
@@ -25,10 +28,12 @@ dependencies {
     commonMainApi(libs.mokoMvvmLiveData)
     commonMainApi(libs.mokoMvvmLiveDataResources)
     commonMainApi(projects.fieldsLivedata)
+
+    iosMainImplementation("dev.icerock.moko:parcelize:0.9.0")
 }
 
 multiplatformResources {
-    multiplatformResourcesPackage = "com.icerockdev.library"
+    resourcesPackage.set("com.icerockdev.library")
 }
 
 framework {

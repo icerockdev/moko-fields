@@ -14,6 +14,7 @@ import dev.icerock.moko.fields.core.validations.notBlank
 import dev.icerock.moko.fields.flow.FormField
 import dev.icerock.moko.fields.flow.flowBlock
 import dev.icerock.moko.fields.flow.validations.fieldValidation
+import dev.icerock.moko.fields.sample.declarativeui.shared.MR
 import dev.icerock.moko.mvvm.flow.CFlow
 import dev.icerock.moko.mvvm.flow.cFlow
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
