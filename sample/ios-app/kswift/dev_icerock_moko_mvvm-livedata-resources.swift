@@ -12,33 +12,3 @@ public extension UIKit.UILabel {
     return UILabelBindingKt.bindText(self, liveData: liveData as! MultiPlatformLibrary.LiveData<MultiPlatformLibrary.StringDesc>)
   }
 }
-
-public extension UIKit.UITextField {
-  /**
-   * selector: PackageFunctionContext/dev.icerock.moko:mvvm-livedata-resources/dev.icerock.moko.mvvm.livedata.resources/Class(name=platform/UIKit/UITextField)/bindText/liveData:Class(name=dev/icerock/moko/mvvm/livedata/LiveData)<TypeParameter(id=0)>
-   */
-  @discardableResult
-  public func bindText<T : StringDesc>(liveData: LiveData<T>) -> Closeable {
-    return UITextFieldBindingKt.bindText(self, liveData: liveData as! MultiPlatformLibrary.LiveData<MultiPlatformLibrary.StringDesc>)
-  }
-}
-
-public extension UIKit.UITextView {
-  /**
-   * selector: PackageFunctionContext/dev.icerock.moko:mvvm-livedata-resources/dev.icerock.moko.mvvm.livedata.resources/Class(name=platform/UIKit/UITextView)/bindText/liveData:Class(name=dev/icerock/moko/mvvm/livedata/LiveData)<TypeParameter(id=0)>
-   */
-  @discardableResult
-  public func bindText<T : StringDesc>(liveData: LiveData<T>) -> Closeable {
-    return UITextViewBindingKt.bindText(self, liveData: liveData as! MultiPlatformLibrary.LiveData<MultiPlatformLibrary.StringDesc>)
-  }
-}
-
-public extension UIKit.UIButton {
-  /**
-   * selector: PackageFunctionContext/dev.icerock.moko:mvvm-livedata-resources/dev.icerock.moko.mvvm.livedata.resources/Class(name=platform/UIKit/UIButton)/bindTitle/liveData:Class(name=dev/icerock/moko/mvvm/livedata/LiveData)<TypeParameter(id=0)>
-   */
-  @discardableResult
-  public func bindTitle<T : StringDesc>(liveData: LiveData<T>) -> Closeable {
-    return UIButtonBindingKt.bindTitle(self, liveData: liveData as! MultiPlatformLibrary.LiveData<MultiPlatformLibrary.StringDesc>)
-  }
-}

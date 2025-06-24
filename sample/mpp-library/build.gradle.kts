@@ -48,20 +48,21 @@ framework {
 kswift {
     projectPodspecName.set("MultiPlatformLibrary")
 
-    install(dev.icerock.moko.kswift.plugin.feature.PlatformExtensionFunctionsFeature)
+    install(dev.icerock.moko.kswift.plugin.feature.PlatformExtensionFunctionsFeature)  {
+        filter = includeFilter(
+            "PackageFunctionContext/dev.icerock.moko:mvvm-livedata/dev.icerock.moko.mvvm.livedata/Class(name=platform/UIKit/UITextField)/bindTextTwoWay/liveData:Class(name=dev/icerock/moko/mvvm/livedata/MutableLiveData)<Class(name=kotlin/String)>",
+            "PackageFunctionContext/dev.icerock.moko:mvvm-livedata-resources/dev.icerock.moko.mvvm.livedata.resources/Class(name=platform/UIKit/UILabel)/bindText/liveData:Class(name=dev/icerock/moko/mvvm/livedata/LiveData)<TypeParameter(id=0)>"
+        )
+    }
 }
 
 kotlin.targets.withType<KotlinNativeTarget>().configureEach {
     binaries.withType<org.jetbrains.kotlin.gradle.plugin.mpp.Framework>().configureEach {
         embedBitcodeMode.set(org.jetbrains.kotlin.gradle.plugin.mpp.BitcodeEmbeddingMode.DISABLE)
         linkTask.doLast {
-            println("start copy kswift files")
             val file = File(outputDirectory, "${baseName}Swift")
-            println(file.absolutePath)
             val from = file.takeIf { it.exists() } ?: return@doLast
-            println("from $from")
             val to = File(rootDir, "sample/ios-app/kswift")
-            println("to $to")
             from.copyRecursively(to, overwrite = true)
         }
     }

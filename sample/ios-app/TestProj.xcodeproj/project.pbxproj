@@ -13,8 +13,8 @@
 		45F4791E219463C7003D25FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45F47914219463C7003D25FA /* Main.storyboard */; };
 		45F47921219463C7003D25FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45F4791A219463C7003D25FA /* Assets.xcassets */; };
 		45F47922219463C7003D25FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F4791B219463C7003D25FA /* AppDelegate.swift */; };
-		DE7B200A2E0A913500A41F56 /* dev_icerock_moko_mvvm-livedata-resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7B20092E0A913500A41F56 /* dev_icerock_moko_mvvm-livedata-resources.swift */; };
-		DE7B200B2E0A913500A41F56 /* dev_icerock_moko_mvvm-livedata.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7B20082E0A913500A41F56 /* dev_icerock_moko_mvvm-livedata.swift */; };
+		DE7B200F2E0A96A400A41F56 /* dev_icerock_moko_mvvm-livedata.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7B200C2E0A96A400A41F56 /* dev_icerock_moko_mvvm-livedata.swift */; };
+		DE7B20102E0A96A400A41F56 /* dev_icerock_moko_mvvm-livedata-resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7B200D2E0A96A400A41F56 /* dev_icerock_moko_mvvm-livedata-resources.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,8 +27,8 @@
 		45F4791B219463C7003D25FA /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		45F4791C219463C7003D25FA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A644D2F1C5377C40A53FCD6A /* Pods-TestProj.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestProj.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestProj/Pods-TestProj.release.xcconfig"; sourceTree = "<group>"; };
-		DE7B20082E0A913500A41F56 /* dev_icerock_moko_mvvm-livedata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "dev_icerock_moko_mvvm-livedata.swift"; sourceTree = "<group>"; };
-		DE7B20092E0A913500A41F56 /* dev_icerock_moko_mvvm-livedata-resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "dev_icerock_moko_mvvm-livedata-resources.swift"; sourceTree = "<group>"; };
+		DE7B200C2E0A96A400A41F56 /* dev_icerock_moko_mvvm-livedata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "dev_icerock_moko_mvvm-livedata.swift"; sourceTree = "<group>"; };
+		DE7B200D2E0A96A400A41F56 /* dev_icerock_moko_mvvm-livedata-resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "dev_icerock_moko_mvvm-livedata-resources.swift"; sourceTree = "<group>"; };
 		DFBDF7D3559D080FDCA444A6 /* Pods-TestProj.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestProj.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestProj/Pods-TestProj.debug.xcconfig"; sourceTree = "<group>"; };
 		E8D683A7C91DCD56058C7435 /* Pods_TestProj.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestProj.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -54,20 +54,11 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		2223D07E27D24B8900DB5F95 /* kswift */ = {
-			isa = PBXGroup;
-			children = (
-				DE7B20082E0A913500A41F56 /* dev_icerock_moko_mvvm-livedata.swift */,
-				DE7B20092E0A913500A41F56 /* dev_icerock_moko_mvvm-livedata-resources.swift */,
-			);
-			name = kswift;
-			sourceTree = "<group>";
-		};
 		287627F61F319065007FA12B = {
 			isa = PBXGroup;
 			children = (
+				DE7B200E2E0A96A400A41F56 /* kswift */,
 				45964D362282A1FD00C16658 /* mpp-library */,
-				2223D07E27D24B8900DB5F95 /* kswift */,
 				45F47910219463C7003D25FA /* src */,
 				287628001F319065007FA12B /* Products */,
 				EE1ABB3E79CE541540D3155F /* Frameworks */,
@@ -105,6 +96,15 @@
 				45F47914219463C7003D25FA /* Main.storyboard */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		DE7B200E2E0A96A400A41F56 /* kswift */ = {
+			isa = PBXGroup;
+			children = (
+				DE7B200C2E0A96A400A41F56 /* dev_icerock_moko_mvvm-livedata.swift */,
+				DE7B200D2E0A96A400A41F56 /* dev_icerock_moko_mvvm-livedata-resources.swift */,
+			);
+			path = kswift;
 			sourceTree = "<group>";
 		};
 		EE1ABB3E79CE541540D3155F /* Frameworks */ = {
@@ -231,9 +231,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE7B200A2E0A913500A41F56 /* dev_icerock_moko_mvvm-livedata-resources.swift in Sources */,
-				DE7B200B2E0A913500A41F56 /* dev_icerock_moko_mvvm-livedata.swift in Sources */,
 				45D74FCC22BFDDFD00CAB0C8 /* TestViewController.swift in Sources */,
+				DE7B200F2E0A96A400A41F56 /* dev_icerock_moko_mvvm-livedata.swift in Sources */,
+				DE7B20102E0A96A400A41F56 /* dev_icerock_moko_mvvm-livedata-resources.swift in Sources */,
 				45F47922219463C7003D25FA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
