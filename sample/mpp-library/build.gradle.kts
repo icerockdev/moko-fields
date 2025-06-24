@@ -1,4 +1,5 @@
 import io.gitlab.arturbosch.detekt.Detekt
+import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 import java.util.Locale
 
 /*
@@ -45,5 +46,23 @@ framework {
 }
 
 kswift {
+    projectPodspecName.set("MultiPlatformLibrary")
+
     install(dev.icerock.moko.kswift.plugin.feature.PlatformExtensionFunctionsFeature)
+}
+
+kotlin.targets.withType<KotlinNativeTarget>().configureEach {
+    binaries.withType<org.jetbrains.kotlin.gradle.plugin.mpp.Framework>().configureEach {
+        embedBitcodeMode.set(org.jetbrains.kotlin.gradle.plugin.mpp.BitcodeEmbeddingMode.DISABLE)
+        linkTask.doLast {
+            println("start copy kswift files")
+            val file = File(outputDirectory, "${baseName}Swift")
+            println(file.absolutePath)
+            val from = file.takeIf { it.exists() } ?: return@doLast
+            println("from $from")
+            val to = File(rootDir, "sample/ios-app/kswift")
+            println("to $to")
+            from.copyRecursively(to, overwrite = true)
+        }
+    }
 }
